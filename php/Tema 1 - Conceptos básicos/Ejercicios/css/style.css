@@ -1,0 +1,72 @@
+h1, h3, p{
+	text-align: center;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a{
+    text-decoration:none;
+    }   
+          
+nav li{
+    display:inline-block;
+    padding:5px 10px;
+    background-color: lightgray;
+    border:1px solid grey;
+    text-align:center;
+    color:black;
+    position:relative;
+}
+
+nav li:hover{
+    background-color: lightsteelblue;
+}
+
+table {
+	margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th{
+    border: 1px solid black;
+}
+
+td{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.centrado{
+	text-align: center;
+}
+
+.par{
+    background-color:lightgrey;
+}
+
+.positivo{
+    color:blue;
+}
+
+.negativo{
+    color:red;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor table{
+    margin: 10px;
+    padding: 20px;
+}
