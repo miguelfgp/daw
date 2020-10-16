@@ -1,0 +1,18 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu, .list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu li a{
+    text-decoration: none;
+}
+
+#text{
+    display: none;
+}
