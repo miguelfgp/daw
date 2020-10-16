@@ -65,12 +65,13 @@ function aumentarMargen(){
     
     document.getElementById('enunciado').innerHTML = "Asignar margen en puntos.";   
     
-    if (document.getElementById('solucion').style.margin != "250px"){
-        document.getElementById('solucion').style.margin = "250px";
-    } else {
-        document.getElementById('solucion').style.margin = "0px";
-    }
+    elemento = document.getElementById('solucion');
 
+    tamanhoMargen = parseInt(window.getComputedStyle(elemento, null).getPropertyValue('margin'));
+
+    tamanhoMargen++;
+
+    document.getElementById('solucion').style.margin = tamanhoMargen;
 }
 
 // Ejercicio 7. Usar console.log() para mostrar el tamaño de la ventana actual.
