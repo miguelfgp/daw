@@ -49,12 +49,13 @@ function aumentarTamanho(){
     
     document.getElementById('enunciado').innerHTML = "Tecla para aumentar tamaño de letra";
 
-    if (document.getElementById('solucion').style.fontSize != "50px"){
-        document.getElementById('solucion').style.fontSize = "50px";
-    } else {
-        document.getElementById('solucion').style.fontSize = "24px";
-    }
-    
+    elemento = document.getElementById('solucion');
+
+    tamanhoLetra = parseInt(window.getComputedStyle(elemento, null).getPropertyValue('font-size'));
+
+    tamanhoLetra++;
+
+    document.getElementById('solucion').style.fontSize = tamanhoLetra;
 
 }
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+
+
+    <script type="text/javascript">            
+
+        let edad_juan = prompt("Introduce la edad de Juan", "");
+        let edad_pedro = prompt("Introduce la edad de Pedro", "");
+        let diferencia;
+        let mensaje;
+
+        if (edad_juan > edad_pedro){
+            diferencia = edad_juan - edad_pedro
+            mensaje = "Juan es mayor que Pedro. Se llevan " + diferencia + " años";
+        } else if (edad_juan == edad_pedro){
+            mensaje = "Juan y Pedro tienen la misma edad";
+        } else {
+            diferencia = edad_pedro - edad_juan
+            mensaje = "Pedro es mayor que Juan. Se llevan " + diferencia + " años";
+        }
+
+        alert(mensaje);
+
+    </script>
+    
+</body>
+
+</html>
