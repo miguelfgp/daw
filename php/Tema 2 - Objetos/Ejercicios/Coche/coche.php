@@ -20,6 +20,8 @@
             $this->litrosReserva = $litrosReserva;
         }     
 
+        // Todos los Getter y Setter de cada atributo
+
         function setTipoCombustible($tipoCombustible){
             $this->tipoCombustible = $tipoCombustible;
         }
@@ -58,7 +60,9 @@
         
         function getLitrosReserva(){
             return $this->litrosReserva;
-        }   
+        }
+        
+        // Función que determina si el vehículo está parado o no según el atributo $velocidad
         
         function estaParado(){
             
@@ -71,6 +75,11 @@
             return $parado;
         }
 
+        /* 
+        Función que determina si el vehículo está en reserva o no comparando los atributos
+        $combustible y $litrosReserva
+        */
+
         function estaEnReserva(){
 
             $reserva = true;
@@ -81,6 +90,11 @@
             
             return $reserva;
         }
+
+        /*
+        Función que devuelve un mensaje especificando si el vehículo está en movimiento,
+        parado o en reserva
+        */
         
         function estadoCoche(){
 
@@ -97,23 +111,51 @@
             return $mensaje;
         }
 
+        // Función que aumenta la velocidad del coche y devuelve un mensaje
+
         function acelerar($velocidadAceleracion){
             $this->velocidad += $velocidadAceleracion;
             return "El coche ha acelerado hasta los " . $this->velocidad . " km/h";
         }
 
+        /* 
+        Función que frena la velocidad del coche y devuelve un mensaje. Si la
+        velocidad final resulta negativa, la convierte en 0
+        */
+
         function frenar($velocidadFrenado){
             $this->velocidad -= $velocidadFrenado;
+            if ($this->velocidad < 0){
+                $this->velocidad = 0;
+            }
             return "El coche ha frenado hasta los " . $this->velocidad . " km/h";
         }
         
+        /*
+        Función que aumenta la cantidad de combustible del vehículo y devuelve un
+        mensaje. Previamente realiza las siguientes verificaciones:
+            - Que el tipo de combustible coincida con el del vehículo.
+            - Que el vehículo no esté en movimiento.
+            - Que la cantidad de combustible no exceda el total del depósito. En ese
+              caso, el vehículo solo reposta la cantidad necesaria de combustible.
+        */
+
         function repostar($cantidadCombustible, $tipoCombustible){
 
             $mensaje = "El coche no puede repostar porque está en movimiento";
 
-            if ($this->tipoCombustible === $tipoCombustible){
+            if ($this->tipoCombustible == $tipoCombustible){
                 if($this->estaParado()){
+
+                    if(($this->combustible + $cantidadCombustible) > $this->combustibleMaximo){
+                        $cantidadCombustible -= $this->combustible + $cantidadCombustible - $this->combustibleMaximo;
+                        $this->combustible = $this->combustibleMaximo;
+                    } else {
+                        $this->combustible += $cantidadCombustible;
+                    }
+
                     $this->combustible += $cantidadCombustible;
+
                     $mensaje = "El coche ha repostado " . $cantidadCombustible . " litros de " . $tipoCombustible;
                 }
             } else {

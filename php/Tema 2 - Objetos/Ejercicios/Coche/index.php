@@ -15,9 +15,12 @@
 
     echo '<tr><td>' . $coche->estadoCoche() . '</td></tr>';
     
-    echo '<tr><th>Repostamos el vehículo</th></tr>';
+    echo '<tr><th>Intentamos repostar con el carburante equivocado</th></tr>';
 
-    echo '<tr><td>' . $coche->repostar(30, 'Diesel') . '</td></tr>';
+    echo '<tr><td>' . $coche->repostar(70, 'Gasolina') . '</td></tr>';
+
+    echo '<tr><th>Repostamos correctamente el vehículo, aunque intentamos más del máximo del depósito</th></tr>';
+    echo '<tr><td>' . $coche->repostar(100, 'Diesel') . '</td></tr>';    
     echo '<tr><td>' . $coche->estadoCoche() . '</td></tr>';
 
     echo '<tr><th>Aceleramos el vehículo</th></tr>';
@@ -25,14 +28,15 @@
     echo '<tr><td>'. $coche->acelerar(50) . '</td></tr>';
     echo '<tr><td>' . $coche->estadoCoche() . '</td></tr>';  
 
-    echo '<tr><th>Frenamos el vehículo</th></tr>';
+    echo '<tr><th>Frenamos el vehículo e intentamos repostar</th></tr>';
 
     echo '<tr><td>' . $coche->frenar(20) . '</td></tr>';
     echo '<tr><td>' . $coche->estadoCoche() . '</td></tr>';
+    echo '<tr><td>' . $coche->repostar(10, 'Diesel') . '</td></tr>';
 
     echo '<tr><th>Volvemos a frenar el vehículo hasta pararlo</th></tr>';
 
-    echo '<tr><td>' . $coche->frenar(30) . '</td></tr>';
+    echo '<tr><td>' . $coche->frenar(50) . '</td></tr>';
     echo '<tr><td>' . $coche->estadoCoche() . '</td></tr>';   
     
 ?>
