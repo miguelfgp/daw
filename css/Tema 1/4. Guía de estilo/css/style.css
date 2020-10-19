@@ -3,16 +3,17 @@
     padding: 0px;
 }
 
-.menu, .list {
+nav ul {
     list-style: none;
     display: flex;
     flex-direction: row;
 }
 
-.menu li a{
+nav a{
     text-decoration: none;
 }
 
-#text{
-    display: none;
+main{
+    margin: 10px;
 }
+
