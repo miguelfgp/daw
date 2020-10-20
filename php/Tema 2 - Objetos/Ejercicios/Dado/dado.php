@@ -15,7 +15,9 @@
         // El método setter de minNumDado no permite valores menores que 0
 
         function setMinNumDado($minNumDado){
-            if ($minNumDado >= 0){
+            $this->minNumDado = 0;
+
+            if ($minNumDado > 0){
                 $this->minNumDado = $minNumDado;
             }
         }
@@ -27,7 +29,9 @@
         // El método setter de maxNumDado no permite valores mayores que 12
         
         function setMaxNumDado($MaxNumDado){
-            if ($maxNumDado <= 12){
+            $this->maxNumDado = 12;
+
+            if ($maxNumDado < 12){
                 $this->maxNumDado = $maxNumDado;
             }
         }

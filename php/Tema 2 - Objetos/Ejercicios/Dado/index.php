@@ -12,9 +12,11 @@
 
     $dado = new Dado();
 
+    
     for ($i = 0; $i < 12; $i++){
         echo $dado->tirarDado() . '<br>'; 
-    }    
+    }  
+      
     
 ?>
 </table>
