@@ -1,0 +1,52 @@
+*{
+    margin: 25px;
+}
+
+.blue{
+    border: 10px solid MediumBlue;
+    background-color: cornflowerblue;
+    width: 60%;
+    height: 650px;
+    font-size: 50px;
+}
+
+.purple, .brown, .green{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.purple{
+    border: 10px solid Purple;
+    float: right;
+    background-color: MediumPurple;
+    width: 30%;
+    height: 550px;
+}
+
+.brown{
+    border: 10px solid SaddleBrown;
+    float: left;
+    background-color: SandyBrown;
+    width: 30%;
+    height: 250px;
+}
+
+.green{
+    border: 10px solid green;
+    float: left;
+    background-color:  SpringGreen;
+    width: 30%;
+    height: 250px;
+}
+
+.list{
+        margin-top: 15%;
+}
+
+ul li{
+    list-style-type: none;
+    margin-left: -10px;
+    text-align: center;
+}

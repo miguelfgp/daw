@@ -1,0 +1,18 @@
+img{
+    float: left;
+    padding: 0px 10px 15px 0px;
+}
+
+body{
+    margin:auto;
+    width:35%;
+}
+
+h1{
+    color: DodgerBlue;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 25px;
+}

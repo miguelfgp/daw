@@ -1,0 +1,31 @@
+/* 
+fichero css con formatos de padding
+alumno:
+fecha:
+*/
+body {
+  background-color:LightBlue;
+}
+
+h1 {
+  margin: 2% 1%;
+  padding: 1%;
+  background-color:SkyBlue;
+  color: DodgerBlue;
+}
+
+p {
+  margin: 2% 1%;
+  padding: 1%;
+  background-color:SkyBlue;
+  color: RoyalBlue;
+}
+
+div {
+  margin: 2% 5%;
+  padding: 1%;
+  width:700px;
+  height:auto;
+  background-color:RoyalBlue;
+}
+
