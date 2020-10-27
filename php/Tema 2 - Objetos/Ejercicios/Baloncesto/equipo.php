@@ -8,13 +8,17 @@
         function __construct(){
         }
 
-        function addJug($jugadores){
-            $this->jugadores = $jugadores;
+        function addJug($jugador){
+            $this->jugadores[] = $jugador;
         }
 
         function getJug($numJugador){
             return $this->jugadores[$numJugador];
         }
+
+        function getJugadores(){
+            return $this->jugadores;
+        }        
 
         function getTotal(){
 

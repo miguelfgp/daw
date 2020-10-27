@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Ejercicio Tema 3 (Alumnos) -  Miguel FGP</h1>
+
+    <h3>Introduce los datos del alumno</h3>
+
+    <form action="alumno.php" method="post">
+        <div>
+            <label>Nombre:</label>
+            <input type="text" name="nombre">
+        </div>
+        <br>        
+        <div>
+            <label>Apellidos:</label>
+            <input type="text" name="apellidos">
+        </div>
+        <br>
+        <div>
+            <label>Curso:</label>
+            <select name="curso">
+                <option value="1º">1º</option>
+                <option value="2º">2º</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label>Curso:</label>
+            <select name="ciclo">
+                <option value="daw">DAW</option>
+                <option value="dam">DAM</option>
+            </select>
+        </div>
+        <br>        
+        <div>
+            <label>Calificación PROG:</label>
+            <input type="number" name="prog" min="0" max="10">
+        </div>
+        <br>
+        <div>
+            <label>Calificación ED:</label>
+            <input type="number" name="ed" min="0" max="10">
+        </div>
+        <br>
+        <div>
+            <label>Calificación LLMM:</label>
+            <input type="number" name="llmm" min="0" max="10">
+        </div>
+        <br>
+        <div>
+            <label>Calificación BBDD:</label>
+            <input type="number" name="bbdd" min="0" max="10">
+        </div>
+        <br>                
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+

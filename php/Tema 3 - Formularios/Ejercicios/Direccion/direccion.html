@@ -1,0 +1,45 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Ejercicio Tema 3 (Formulario) -  Miguel FGP</h1>
+
+    <h3>Introduce tu dirección según cada campo</h3>
+
+    <form action="direccion.php" method="post">
+        <div>
+            <label>Tipo vía:</label>
+            <select name="tipo">
+                <option name="Calle">Calle</option>
+                <option value="Plaza">Plaza</option>
+                <option value="Avenida">Avenida</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label>Nombre:</label>
+            <input type="text" name="nombre">
+        </div>
+        <br>        
+        <div>
+            <label>Nº:</label>
+            <input type="text" name="numero">
+        </div>
+        <br>
+        <div>
+            <label>Población:</label>
+            <input type="text" name="poblacion">
+        </div>
+        <br>
+        <div>
+        <label>País:</label>
+        <input type="text" name="pais">
+        </div>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+
