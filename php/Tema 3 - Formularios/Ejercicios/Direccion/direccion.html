@@ -20,22 +20,22 @@
         <br>
         <div>
             <label>Nombre:</label>
-            <input type="text" name="nombre">
+            <input type="text" name="nombre" pattern="[^0-9]*">
         </div>
         <br>        
         <div>
             <label>Nº:</label>
-            <input type="text" name="numero">
+            <input type="number" min="1" name="numero">
         </div>
         <br>
         <div>
             <label>Población:</label>
-            <input type="text" name="poblacion">
+            <input type="text" name="poblacion" pattern="[^0-9]*">
         </div>
         <br>
         <div>
-        <label>País:</label>
-        <input type="text" name="pais">
+            <label>País:</label>
+            <input type="text" name="pais" pattern="[^0-9]*">
         </div>
         <br>
         <input type="submit" value="Enviar">

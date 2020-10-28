@@ -17,7 +17,8 @@
         }
     }
 
-    if (strlen($colorHex) == 6){
+    // Actualizado, la comprobación final estaba mal puesta (6 en vez de 7)
+    if (strlen($colorHex) == 7){
         echo strtoupper($colorHex);
     } else {
         echo 'Introduce 3 números entre 0 y 255';

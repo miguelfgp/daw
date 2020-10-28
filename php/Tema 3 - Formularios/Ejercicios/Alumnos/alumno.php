@@ -32,6 +32,5 @@
         echo '<h3>Nota media: ' . $notaMedia . '</h3>';
         echo '<h3>Nota más alta: ' . $notaMax . '</h3>';
         echo '<h3>Nota más baja: ' . $notaMin . '</h3>';
-
     }
 ?>

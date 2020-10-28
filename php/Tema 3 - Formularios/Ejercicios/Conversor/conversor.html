@@ -8,17 +8,17 @@
 
     <h3>Introduce la divisa a convertir</h3>
 
-    <form action="alumno.php" method="post">
-            <input type="number" name="valor">
+    <form action="hacer_conversion.php" method="post">
+            <input type="number" name="valor" min="0" step="0.01">
             <select name="divisa1">
-                <option value="eur">EUR (Euros)</option>
-                <option value="gbp">GBP (Libras)</option>
-                <option value="usd">USD (Dolares)</option>
+                <option value="EUR">EUR (Euros)</option>
+                <option value="GBP">GBP (Libras)</option>
+                <option value="USD">USD (Dolares)</option>
             </select>
             <select name="divisa2">
-                <option value="eur">EUR (Euros)</option>
-                <option value="gbp">GBP (Libras)</option>
-                <option value="usd">USD (Dolares)</option>
+                <option value="EUR">EUR (Euros)</option>
+                <option value="GBP" selected>GBP (Libras)</option>
+                <option value="USD">USD (Dolares)</option>
             </select>                             
         <input type="submit" value="Enviar">
     </form>
