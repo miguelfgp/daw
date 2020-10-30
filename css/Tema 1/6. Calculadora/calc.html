@@ -6,8 +6,9 @@
         <link rel="stylesheet" href="css/style.css"">
     </head>
     <body>
+     
         <div class="calc">
-            <div id="screen">0</div>
+            <input value=0 type="text" pattern="0-9" id="screen" oninput="inputNumber(value)" readonly>
             <div class="logo">N!ntendo CALCBOY</div>
             <div class="button-wrapper">              
                 <div class="button" onclick="insertNumber('7')">7</div>
@@ -23,7 +24,7 @@
                 <div class="button" onclick="insertNumber('3')">3</div>
                 <div class="button" onclick="operate('-')">-</div>
                 <div class="button" onclick="insertNumber('0')">0</div>
-                <div class="button" onclick="operate('X')">X</div>
+                <div class="button" onclick="operate('*')">X</div>
                 <div class="button" onclick="operate('/')">/</div>
                 <div class="button" onclick="operate()">=</div>
             </div>
