@@ -1,0 +1,23 @@
+#main{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+table{
+    text-align: center;
+    margin: auto;
+    border: 1px solid black;
+}
+
+th{
+    background-color: BurlyWood;
+}
+
+tr:nth-child(odd){
+    background-color: Beige;
+}
+
+tr:nth-child(even){
+    background-color: Khaki;
+}
