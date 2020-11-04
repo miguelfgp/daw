@@ -13,19 +13,19 @@ nav ul li a{
     text-decoration: none;
 }
 
-.w3-theme-l3, .w3-theme-l4{
+.w3-theme-dark, .w3-theme-l2, .w3-theme-l3, .w3-theme-l4{
     margin: 0px;
     padding: 10px;
 }
 
-.w3-theme-l3 p, .w3-theme-l4 p, .w3-theme-l4 ul{
-    margin: 0px;
+.w3-theme-d1 p, .w3-theme-l3 p, .w3-theme-l4 p, .w3-theme-l4 ul{
+    margin: 0px 0px 0px 15px;
     padding: 5px;
     width: 40%;
 }
 
-.w3-theme-l4 ul{
-    margin-left: 15px;
+h4, h5{
+    font-weight: 600;
 }
 
 

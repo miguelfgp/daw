@@ -8,14 +8,6 @@
     <h3>Crear un equipo de baloncesto con 9 jugadores y mostrar sus puntuaciones</h3>
 
     <?php 
-    
-    /*
-    $a = array();
-    $a['foo'] = 'bar'; // when you create
-    $a['Title'] = 'blah'; // later
-
-    var_dump($a);
-    */
 
     include 'factura.php'; 
 
@@ -32,6 +24,10 @@
     echo $factura->datosCliente('26809080G') . '<br>';
 
     echo $factura->calculaIVA(20) . '<br>';
+
+    echo $factura->datosFactura() . '<br>';
+    echo $factura2->datosFactura() . '<br>';
+    echo $factura3->datosFactura() . '<br>';
 
 ?>
 </body>
