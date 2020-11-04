@@ -1,15 +1,13 @@
-<?php
-
-    include 'traits.php'; 
+<?php 
 
     class Factura{
         
         private static $totalFact = 0;
         private $numFact;
         private $importe;
-        private $clientes = array();
 
-        public function __construct(){
+        public function __construct($importe){
+            $this->importe = $importe;
             $this->numFact = ++Factura::$totalFact;
         }
 
@@ -18,6 +16,6 @@
         }
 
         use clientes;
-        use iva;
+        use calculos;
     }
 ?>

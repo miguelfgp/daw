@@ -1,8 +1,13 @@
 <?php
 
     include 'cliente.php'; 
+    include 'factura.php';
+    include 'indemnizacion.php';
 
     trait clientes{
+
+        private $clientes = array();
+
         function añadirCliente($cliente){
 
         $dni = $cliente->getDni();
@@ -20,9 +25,12 @@
         }        
     }
 
-    trait iva{
-        function totalSinIVA(){
+    trait calculos{
 
+        private $importe;
+
+        function totalSinIVA(){
+            return $this->importe;
         }
 
         function calculaIVA($cantidad){

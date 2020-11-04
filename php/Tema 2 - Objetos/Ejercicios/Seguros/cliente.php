@@ -1,5 +1,7 @@
 <?php
 
+    include 'indemnizado.php'; 
+    
     class Cliente{
         private $dni;
         private $nombre;
