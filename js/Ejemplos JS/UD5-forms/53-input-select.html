@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>SELECT</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+function cambiarColor()
+{
+  var seleccion=document.getElementById('select1');
+  document.getElementById('text1').value=seleccion.selectedIndex;
+  document.getElementById('text2').value=seleccion.options[seleccion.selectedIndex].text;
+  document.getElementById('text3').value=seleccion.options[seleccion.selectedIndex].value;
+}
+</script>
+
+<form>
+  <select id="select1" onChange="cambiarColor()">
+    <option value="ff0000">Rojo</option>
+    <option value="00ff00">Verde</option>
+    <option value="0000ff">Azul</option>
+  </select>
+  <br>
+  Número de índice seleccionado del objeto SELECT:<input type="text" id="text1"><br>
+  Texto seleccionado:<input type="text" id="text2"><br>
+  Valor asociado:<input type="text" id="text3"><br>
+</form>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

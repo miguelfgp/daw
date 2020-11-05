@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>CHECKBOX</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+function contarSeleccionados()
+{
+  var cant=0;
+  if (document.getElementById('checkbox1').checked)
+  {
+    cant++;
+  }
+  if (document.getElementById('checkbox2').checked)
+  {
+    cant++;
+  }
+  if (document.getElementById('checkbox3').checked)
+  {
+    cant++;
+  }
+  if (document.getElementById('checkbox4').checked)
+  {
+    cant++;
+  }
+  alert('Conoce ' + cant + ' lenguajes');
+}
+</script>
+
+<form>
+  <input type="checkbox" id="checkbox1">JavaScript
+  <br>
+  <input type="checkbox" id="checkbox2">PHP
+  <br>
+  <input type="checkbox" id="checkbox3">JSP
+  <br>
+  <input type="checkbox" id="checkbox4">VB.Net
+  <br>
+  <input type="button" value="Mostrar" onClick="contarSeleccionados()">
+</form>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

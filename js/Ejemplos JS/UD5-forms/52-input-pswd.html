@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>PASSWORD</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+  function verificar()
+  {
+    var clave=document.getElementById('clave').value;
+    if (clave.length<5)
+    {
+      alert('La clave no puede tener menos de 5 caracteres!!!');
+    }
+    else
+    {
+      alert('Largo de clave correcta');
+    }
+  }
+</script>
+
+<form>
+  Ingrese una clave:
+  <input type="password" id="clave">
+  <br>
+  <input type="button" value="Confirmar" onClick="verificar()">
+</form>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

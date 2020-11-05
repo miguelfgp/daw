@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>ONMOUSE OVER OUT</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+  function pintar(col)
+  {
+    document.getElementById('cuadrado1').style.backgroundColor=col;
+  }
+</script>
+
+<a href="#" onMouseOver="pintar('#f00')" onMouseOut="pintar('#000')">Rojo</a> -
+<a href="#" onMouseOver="pintar('#0f0')" onMouseOut="pintar('#000')">Verde</a> -
+<a href="#" onMouseOver="pintar('#00f')" onMouseOut="pintar('#000')">Azul</a>
+<div id="cuadrado1" style="background:#000;width:200px;height:200px"></div>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

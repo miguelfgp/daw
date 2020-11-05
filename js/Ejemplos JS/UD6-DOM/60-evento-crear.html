@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>CREAR EVENTO EN PAGINA</h1>
+
+<p>Este ejemplo usa el método addEventListener() para añadir un evento de click a la página.</p>
+
+<p>Pinche en cualquier sitio de la página</p>
+
+<p><strong>Ojo:</strong> El método addEventListener() no funciona en Internet Explorer versión 8 o anteriores.</p>
+
+<p id="aqui" style="color:red; font-size:1.5em"></p>
+<script>
+  // seccion de codigo javascript 
+document.addEventListener("click", function(){
+  document.getElementById("aqui").innerHTML = "¡EVENTO FUNCIONANDO!";
+});
+</script>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>FUNCION CON RETORNO</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+  function formatearFecha(dia,mes,año)
+  {
+    var s='Hoy es '+dia+' de ';
+    switch (mes) {
+    case 1:s=s+'enero ';
+           break;
+    case 2:s=s+'febrero ';
+           break;
+    case 3:s=s+'marzo ';
+           break;
+    case 4:s=s+'abril ';
+           break;
+    case 5:s=s+'mayo ';
+           break;
+    case 6:s=s+'junio ';
+           break;
+    case 7:s=s+'julio ';
+           break;
+    case 8:s=s+'agosto ';
+           break;
+    case 9:s=s+'septiembre ';
+           break;
+    case 10:s=s+'octubre ';
+           break;
+    case 11:s=s+'noviembre ';
+           break;
+    case 12:s=s+'diciembre ';
+           break;
+    } //fin del switch
+    s=s+'de '+año;
+    return s;
+  }
+
+  document.write(formatearFecha(27,1,2020));
+</script>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body onLoad="activarPrimerControl()">
+<h1>ONLOAD</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+  function activarPrimerControl()
+  {
+    document.getElementById('nombre').focus();
+  }
+</script>
+
+<form>
+  Ingrese su nombre:
+  <input type="text" id="nombre"><br>
+  Ingrese su edad:
+  <input type="text" id="edad"><br>
+  <input type="button" value="NoHagoNada">
+</form>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

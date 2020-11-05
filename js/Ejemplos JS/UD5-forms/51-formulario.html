@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>FORMULARIO</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+function mostrar()
+{
+  var nom=document.getElementById('nombre').value;
+  var ed=document.getElementById('edad').value;
+  alert('Ingresó el nombre:' + nom);
+  alert('Y la edad:' + ed);
+}
+</script>
+
+<form>
+  Ingrese su nombre:
+  <input type="text" id="nombre"><br>
+  Ingrese su edad:
+  <input type="text" id="edad"><br>
+  <input type="button" value="Confirmar" onClick="mostrar()">
+</form>
+
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

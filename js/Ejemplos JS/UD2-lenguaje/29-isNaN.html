@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>isNaN (no es un nro)</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+  var x1,x2,suma;
+  x1=prompt('Ingrese el primer valor:','');
+  x2=prompt('Ingrese el segundo valor:','');
+  x1=parseInt(x1);
+  x2=parseInt(x2);
+  if (isNaN(x1) || isNaN(x2))
+  {
+    document.write('Al menos uno de los dos valores ingresados no es numérico.');
+  }
+  else
+  {
+    suma=x1+x2;
+    document.write('La suma de los dos valores es:'+suma);
+  }
+</script>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

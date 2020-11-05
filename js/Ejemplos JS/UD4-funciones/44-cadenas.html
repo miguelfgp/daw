@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>CADENAS</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+
+ var cadena=prompt('Ingrese una cadena:','');
+  document.write('La cadena ingresada es:'+cadena);
+  document.write('<br>');
+  document.write('La cantidad de caracteres son:'+cadena.length);
+  document.write('<br>');
+  document.write('El primer carácter es:'+cadena.charAt(0));
+  document.write('<br>'); 
+  document.write('Los primeros 3 caracteres son:'+cadena.substring(0,3));
+  document.write('<br>'); 
+  if (cadena.indexOf('hola')!=-1)
+    document.write('Se ingresó la subcadena hola');
+  else 
+    document.write('No se ingresó la subcadena hola');
+  document.write('<br>'); 
+  document.write('La cadena convertida a mayúsculas es:'+cadena.toUpperCase());
+  document.write('<br>');
+  document.write('La cadena convertida a minúsculas es:'+cadena.toLowerCase());
+  document.write('<br>'); 
+</script>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

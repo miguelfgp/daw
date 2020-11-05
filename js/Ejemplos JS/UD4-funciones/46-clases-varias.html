@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>OBJETOS - varias clases</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+  //clase Numeroloteria *********************************
+  function Numeroloteria(nombre)
+  {
+    this.nombre=nombre;
+    this.cargarnumero=cargarnumero;
+    this.verificarsigano=verificarsigano;
+  }
+
+  function cargarnumero()
+  {
+    this.numero=prompt("Que número de loteria quiere, "+this.nombre+"?","");
+  }
+
+  function verificarsigano(num)
+  {
+    if (this.numero==num)
+      return true;
+    else
+      return false;
+  }
+
+  //clase Bolillero **************************************
+  function Bolillero()
+  {
+    this.numero=-1;
+    this.sortear=sortear;
+  }
+  
+  function sortear()
+  {
+    this.numero=parseInt(Math.random()*10)+1;
+  }
+
+  // bloque principal
+  var numeroloteria1;
+  numeroloteria1=new Numeroloteria("juan");
+  numeroloteria1.cargarnumero();
+  var numeroloteria2;
+  numeroloteria2=new Numeroloteria("ana");
+  numeroloteria2.cargarnumero();
+  var bolillero;
+  bolillero=new Bolillero();
+  bolillero.sortear();
+  document.write('Numero sorteado:' + bolillero.numero + '<br>');
+  document.write(numeroloteria1.nombre + ' eligió ' + numeroloteria1.numero +'<br>');
+  document.write(numeroloteria2.nombre + ' eligió ' + numeroloteria2.numero +'<br>');
+  if (numeroloteria1.verificarsigano(bolillero.numero))
+  {
+    document.write(numeroloteria1.nombre + ' ha ganado <br>');
+  }
+  if (numeroloteria2.verificarsigano(bolillero.numero))
+  {
+    document.write(numeroloteria2.nombre + ' ha ganado <br>');
+  }  
+</script>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

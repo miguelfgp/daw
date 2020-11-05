@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>TEXTO SEPARADO EN .TXT</h1>
+  <div>
+    <button id="boton1">Aries</button>
+    <button id="boton2">Tauro</button>
+    <button id="boton3">Geminis</button>
+  </div>
+  <div id="contenido"></div>
+  <br>
+  <p>Recordar que para probar estos ejercicios debemos tener instalado un servidor web en nuestro equipo y hacer las peticiones via localhost.
+<br>
+En la carpeta del servidor se debe tener almacenadas los 4 archivos, el html y los 3 archivos txt:
+<br>
+pagina1.html<br>
+aries.txt<br>
+tauro.txt<br>
+geminis.txt </p>
+
+<script>
+  // seccion de codigo javascript 
+    addEventListener("DOMContentLoaded", () => {
+      document.getElementById("boton1").addEventListener("click", () => mostrar('aries.txt'));
+      document.getElementById("boton2").addEventListener("click", () => mostrar('tauro.txt'));
+      document.getElementById("boton3").addEventListener("click", () => mostrar('geminis.txt'));
+    });
+
+    function mostrar(signo) {
+      fetch(signo)
+        .then(response => response.text())
+        .then(datos => document.getElementById("contenido").innerText = datos);
+    }
+
+</script>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

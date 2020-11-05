@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>ARRAY: RECORRERLO</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+  var vec=[10,,30,,50];
+  document.write('Recorredo del vector con un for clásico<br>');
+  var f;
+  for(f=0;f<vec.length;f++)
+  {
+    document.write(vec[f]+'-');
+  }
+  document.write('<br>');
+  document.write('Recorredo del vector con un for in<br>');
+  for(var indice in vec)
+  {
+    document.write(vec[indice]+'-');
+  }
+</script>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>

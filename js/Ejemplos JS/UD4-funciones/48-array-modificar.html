@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--  Ejercicios de Ejemplo -->
+
+<head>
+  <title>Ejercicios Javascript</title>
+  <meta charset="UTF-8">
+  <style>
+	body {
+		background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+	}
+  </style>
+</head>
+<body>
+<h1>ARRAY PUSH Y POP</h1>
+
+
+<script>
+  // seccion de codigo javascript 
+  var sueldos=[];
+  var monto;
+  do {
+    monto=prompt('Ingrese el sueldo (0 para finalizar):','');
+    monto=parseInt(monto);
+    if (monto!=0)
+    {
+      sueldos.push(monto);
+    }
+  } while (monto!=0);
+  var suma=0;
+  for(var f=0;f<sueldos.length;f++)
+  {
+    suma=suma+sueldos[f];
+  }
+  document.write('El total en sueldos ingresado es:'+suma);
+</script>
+</body>
+<!--  fuente http://www.tutorialesprogramacionya.com/ -->
+</html>
