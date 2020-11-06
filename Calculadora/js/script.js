@@ -1,97 +1,96 @@
-var expression = "";
-var op1;
-var op2;
-var sign;
-var inserting = false;
-var operating = false;
+var num1 = '';
+var num2 = '';
+var op1 = '';
+var op2 = '';
+var insert = false;
 
 document.addEventListener('keydown', function(event) {
 
     let code = event.code;
 
     if (code == 'Delete'){
-        deleteScreen();
+        operator('C');
     } else {
         let type = code.slice(0,-1);
         let number = parseInt(code.slice(-1));
 
         if (type == "Digit"){
-            insertNumber(number);
+            operator(number);
         } else if (type == "Numpad"){
             
             if (number >= 0 || number <= 9){
-                insertNumber(number);
+                operator(number);
             }
 
         } else {
 
-            let operator = code.slice(6);
+            let op = code.slice(6);
 
-            switch (operator){
-                case 'Add': operate('+'); break;
-                case 'Subtract': operate('-'); break;
-                case 'Multiply': operate('*'); break;
-                case 'Divide': operate('/'); break;
-                case 'Enter': operate('='); break;
+            switch (op){
+                case 'Add': operator('+'); break;
+                case 'Subtract': operator('-'); break;
+                case 'Multiply': operator('*'); break;
+                case 'Divide': operator('/'); break;
+                case 'Enter': operator('='); break;
             }
         }
     }
 
   });
 
+function operator(char){
 
-function insertNumber(num){
+    if (char >= 0 || char <= 9){
+        if (op1 == ''){
+            num1 += char;
+        } else {
+            num2 += char;
+        }
+        showNumber(char);
+    } else if (char == 'C') {
+        document.getElementById('screen').value = '0';
+        num1 = '';
+        num2 = '';
+        op1 = '';
+        op2 = '';
+    } else {
+        if (op2 != '' && char != '='){
+            op1 = char;
+        } else {
+            op2 = char;
+            calculator();
+        }
+        insert = false;
+    }
+};
+
+function showNumber(num){
     
     var screenNumber = document.getElementById('screen').value;
 
-    if (screenNumber.localeCompare("0") && inserting){
+    if (screenNumber.localeCompare("0") && insert){
         if (screenNumber.length < 5){
             document.getElementById('screen').value += num;
         }
     } else {
         document.getElementById('screen').value = num;
-        inserting = true;
+        insert = true;
     }
-}
+};
 
-function deleteScreen(){
-    document.getElementById('screen').value = '0';
-    result = 0;
-    op1 = 0;
-    op2 = 0;
-    sign = "";
-}
+function calculator(){
+    num1 = eval(num1 + op1 + num2);
+    num1 = checkLength(num1);
+    document.getElementById('screen').value = num1;
 
-function operate(key){
-    let text;
-    let evaluation;
-    inserting = false;
-
-    // Aquí va el código comentado abajo
-
-    if (operating){
-        
-        op2 = document.getElementById('screen').value;
-         
-        expression += op2.toString();
-        evaluation = eval(expression);
-
-        text = checkLength(evaluation);
-        document.getElementById('screen').value = text;
-        expression = "";
-        operating = false;
-        
+    if (op2 == '='){
+        op1 = '';
     } else {
-        op1 = document.getElementById('screen').value;
-        expression += op1.toString();
-
-        if (key != '='){
-            expression += key;
-        }
-
-        operating = true;
+        op1 = op2;
+        op2 = '';
     }
-}
+    num2 = '';
+};
 
 function checkLength(number){
 
@@ -103,34 +102,3 @@ function checkLength(number){
     number = number.substring(0, 5);
     return number;
 }
-
-
-/*
-    if (!operating){
-        sign = key;
-        op1 = parseInt(document.getElementById('screen').value);
-        operating = true;
-    } else {
-        if (result != 0){
-            op1 = parseInt(result);
-        }
-        op2 = parseInt(document.getElementById('screen').value);
-        switch (sign){
-            case '+': 
-                result = op1 + op2;
-                break;
-            case '-': 
-                result = op1 - op2; 
-                break;
-            case '*': 
-                result = op1 * op2; 
-                break;
-            case '/': 
-                result = op1 / op2;
-                break;
-        }
-        sign = key;
-        text = checkLength(result);
-        document.getElementById('screen').value = text;
-    }
-    */
