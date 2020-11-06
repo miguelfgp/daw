@@ -1,24 +1,86 @@
-@media only screen and (max-width:1920px){ 
+#header, #menu, #logo, #nav{
+    margin: 0px;
+}
 
-    #header{
-        width: 100%;
-        height: 200px;
-        background-color: red;
-        position: relative;
+#header{
+    width: 100%;
+    background-color: red;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+#header h1{
+    text-align: center;
+}
+
+#menu{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    text-align: center;
+}
+
+#logo{
+    width: 30%;
+    background-color: green;
+}
+
+#logo2 {
+    display: none;
+}
+
+#nav{
+    width: 70%;
+    background-color: blue;
+}
+
+#list ul{
+    margin: 0px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+#sandwich{
+    display: none;
+    position: relative;
+}
+
+
+@media only screen and (max-width:692px){ 
+
+    #sandwich{
+        display: block;
     }
 
-    #header h1{
-        text-align: center;
+    #list{
+        display: none;
     }
 
-    #logo{
-        position: relative;
-        width: 30%;
-        height: 100%;
+    #logo1 {
+        display: none;
     }
 
-    #logo h1{
-        text-align: left;
-        
-    }
+    #logo2 {
+        display: block;
+    }        
+}
+
+
+#hidden-list{
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: yellow;
+}
+
+#sandwich:hover #hidden-list{
+    display: block;
+}
+
+#hidden-list ul{
+    list-style: none;
 }
