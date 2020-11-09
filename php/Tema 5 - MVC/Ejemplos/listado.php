@@ -1,5 +1,5 @@
 <?php
-    require 'lib/escuela.php';
+    require 'lib/alumnos.php';
 
     echo '<table><tr>';
     echo '<th>Id</th>';
@@ -7,12 +7,11 @@
     echo '<th>Apellidos</th>';
     echo '<th>Edad</th>';
 
-    $escuela = new Escuela();
+    $alumnos = new Alumnos();
 
-    $alumnos = $escuela->verAlumnos();
+    $listadoAlumnos = $alumnos->verAlumnos();
 
-    for($i=0; $i<$alumnos->num_rows;$i++){
-        $alumno = $alumnos->fetch_assoc();
+    foreach ($listadoAlumnos as $alumno){
         echo '<tr>';
         echo '<td>' . $alumno['id'] . '</td>';            
         echo '<td>' . $alumno['nombre'] . '</td>';
