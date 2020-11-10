@@ -19,6 +19,7 @@
         </nav>
 
         <form action="anotador.php" method="post">
+            <label>Equipo:</label>
                 <?php
                     require('lib/nba.php');
                     require('lib/util.php');
