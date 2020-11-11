@@ -4,10 +4,18 @@
         
         private $connect;
         private $query;
+        private $error;
         private $array;
 
         function __construct($host, $user, $pass, $schema, $port){
             $this->connect = new mysqli($host, $user, $pass, $schema, $port);
+            $this->error();
+        }
+
+        function error(){
+            if($this->connect->connect_errno){
+                echo '<h3>Fallo al conectar MySQL (' . $this->connect->connect_errno . ': ' . $this->connect_error . '</h3>';
+            }
         }
 
         function query($query){
