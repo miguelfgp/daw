@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+body{
+    background-color: rgb(243 244 251);
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -28,6 +32,27 @@ h4, h5{
     font-weight: 600;
 }
 
+.w3-theme-l5 table{
+    top: 20px;
+    padding: 20px;
+}
 
+table{
+    padding: 30px 30px;
+}
 
+table .w3-theme-l4{
+    width: 500px;
+}
+
+table .w3-theme-l4 ul{
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    padding-right: 35px;
+}
+
+table .w3-theme-l4 ul li{
+    margin: 10px;
+}
 

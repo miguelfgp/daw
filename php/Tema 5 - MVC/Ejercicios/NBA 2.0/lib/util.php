@@ -25,7 +25,7 @@
             return $html;
         }
 
-        static function arrayToRows($array, $keys){
+        static function arrayToRows($array, $keys = null){
 
             $html = '';
             

@@ -18,6 +18,18 @@ require 'db.php';
             return parent::query('SELECT nombre FROM equipos');
         }
 
+        function listaEquiposCompleta(){
+            return parent::query('SELECT * FROM equipos');
+        }
+
+        function listaConferencias(){
+            return parent::query('SELECT conferencia FROM equipos GROUP BY conferencia');
+        }
+
+        function listaDivision(){
+            return parent::query('SELECT division FROM equipos GROUP BY division');
+        }          
+
         function listaPartidos($equipo){
             return parent::query('SELECT equipo_local, puntos_local, puntos_visitante, equipo_visitante FROM partidos WHERE equipo_local = "'.$equipo.'" OR equipo_visitante = "'.$equipo.'"');
         }
@@ -40,7 +52,7 @@ require 'db.php';
         
         function partidosTemp($equipoLocal, $equipoVisitante, $temporada){
             return parent::query('SELECT equipo_local, puntos_local, puntos_visitante, equipo_visitante, temporada FROM partidos WHERE equipo_local = "'.$equipoLocal.'" AND equipo_visitante = "'.$equipoVisitante.'" AND temporada = "'.$temporada.'"');
-        }        
+        }
 
     }
 

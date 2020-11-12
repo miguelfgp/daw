@@ -11,6 +11,7 @@
 
         <nav>
             <ul>
+                <li><a href="equipos.php">Equipos</a></li>
                 <li><a href="resultados.php">Resultados</a></li>
                 <li><a href="listas.php">Jugadores</a></li>
                 <li><a href="anotador.php">Max Anotador</a></li>

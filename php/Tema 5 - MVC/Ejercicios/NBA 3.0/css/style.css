@@ -2,7 +2,7 @@ body{
     background-color: BlanchedAlmond;
 }
 
-body, a{
+body, a, input{
     color: Brown;
 }
 
@@ -50,4 +50,14 @@ ul li{
 
 ul li a{
     text-decoration: none;
+}
+
+table input{
+    background-color: transparent;
+    border: none;
+    text-align: center;
+}
+
+table input:focus{
+    outline: none;
 }
