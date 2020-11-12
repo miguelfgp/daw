@@ -4,7 +4,6 @@
         
         private $connect;
         private $query;
-        private $error;
         private $array;
 
         function __construct($host, $user, $pass, $schema, $port){

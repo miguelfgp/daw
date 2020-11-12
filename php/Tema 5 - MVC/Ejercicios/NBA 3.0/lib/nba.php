@@ -54,6 +54,19 @@ require 'db.php';
             return parent::query('SELECT equipo_local, puntos_local, puntos_visitante, equipo_visitante, temporada FROM partidos WHERE equipo_local = "'.$equipoLocal.'" AND equipo_visitante = "'.$equipoVisitante.'" AND temporada = "'.$temporada.'"');
         }
 
+        function insertEquipo($nombre, $ciudad, $conferencia, $division){
+            return parent::query('INSERT INTO equipos (Nombre, Ciudad, Conferencia, Division) VALUES ("'.$nombre.'", "'.$ciudad.'", "'.$conferencia.'", "'.$division.'")');
+        }
+
+        function updateEquipo($equipo, $nombre, $ciudad, $conferencia, $division){
+            return parent::query('UPDATE equipos SET Nombre = "'.$nombre.'", Ciudad = "'.$ciudad.'", Conferencia = "'.$conferencia.'", Division = "'.$division.'" WHERE (Nombre = "'.$equipo.'")');
+        }
+
+        function deleteEquipo($equipo){
+            return parent::query('DELETE FROM equipos WHERE (Nombre = "'.$equipo.'")');
+        }
+
+
     }
 
 ?>

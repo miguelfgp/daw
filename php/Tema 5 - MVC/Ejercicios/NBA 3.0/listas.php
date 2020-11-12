@@ -44,7 +44,7 @@
                 $campos = ['Nombre', 'Procedencia', 'Altura', 'Peso', 'Posicion'];
 
                 echo '<table><tr><th>Nombre</th><th>Procedencia</th><th>Altura</th><th>Peso</th><th>Posición</th>';
-                echo Utility::arrayToRows($plantilla, $campos);
+                echo Utility::arrayToTable($plantilla, $campos);
                 echo '</table>';
                 
             }

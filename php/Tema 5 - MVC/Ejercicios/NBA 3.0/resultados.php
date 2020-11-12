@@ -54,7 +54,7 @@
                 $campos = ['equipo_local', 'puntos_local', 'puntos_visitante', 'equipo_visitante', 'temporada'];
 
                 echo '<table><tr><th>Local</th><th colspan="2">Resultado</th><th>Visitante</th><th>Temporada</th>';
-                echo Utility::arrayToRows($partidos, $campos);
+                echo Utility::arrayToTable($partidos, $campos);
                 echo '</table>';
                 
             }

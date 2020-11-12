@@ -25,13 +25,12 @@
             return $html;
         }
 
-        static function arrayToRows($array, $keys = null, $urls = null){
+        static function arrayToTable($array, $keys = null){
 
             $html = '';
             
             foreach ($array as $element){
                 $html .= '<tr>';
-                if (empty($urls)){
                     if (empty($keys)){
                         $html .= '<td>' . $element . '</td>';
                     } else {
@@ -39,34 +38,25 @@
                             $html .= '<td>' . $element[$key] . '</td>';
                         }
                     }
-                } else {
-                    if (empty($keys)){
-                        $html .= '<td>' . $element . '</td>';
-                        foreach ($urls as $url){
-                            $html .= '<td><a href="' . $url['url']. '">'.$url['nombre'].'</a></td>';
-                        }
-                    } else {
-                        foreach ($keys as $key){
-                            $html .= '<td contentEditable="true">' . $element[$key] . '</td>';
-                        }
-                        foreach ($urls as $url){
-                            $html .= '<td><a href="' . $url['url']. '">'.$url['nombre'].'</a></td>';
-                        }
-                    }
-                }
                 $html .= '</tr>';
             }
             
             return $html;
         }        
 
-        static function arrayToFormRows($array, $keys = null, $urls = null){
+        static function arrayToFormTable($headers, $array, $keys = null, $buttons = null){
 
-            $html = '<form>';
+            $html = '<form action="" method="post"><table><tr>';
+
+            foreach ($headers as $head){
+                $html .= '<th>' . $head . '</th>';
+            }
+
+            $html .= '</tr>';
             
             foreach ($array as $element){
                 $html .= '<tr>';
-                if (empty($urls)){
+                if (empty($buttons)){
                     if (empty($keys)){
                         $html .= '<td>' . $element . '</td>';
                     } else {
@@ -76,23 +66,23 @@
                     }
                 } else {
                     if (empty($keys)){
-                        $html .= '<td>' . $element . '</td>';
-                        foreach ($urls as $url){
-                            $html .= '<td><a href="' . $url['url']. '">'.$url['nombre'].'</a></td>';
+                        $html .= '<td><input type="text" name="'. $element . '" value="' . $element .'"></td>';
+                        foreach ($buttons as $button){
+                            $html .= '<td><button type="submit" name="' . $button['url']. '" value="'.$element[$keys[0]].'">'.$button['nombre'].'</button></td>';
                         }
                     } else {
                         foreach ($keys as $key){
-                            $html .= '<td><input type="text" value="' . $element[$key] .'"></td>';
+                            $html .= '<td><input type="text" name="'. $element[$keys[0]].'_'.$key . '" value="' . $element[$key] .'"></td>';
                         }
-                        foreach ($urls as $url){
-                            $html .= '<td><a href="' . $url['url']. '">'.$url['nombre'].'</a></td>';
+                        foreach ($buttons as $button){
+                            $html .= '<td><button type="submit" name="' . $button['url']. '" value="'.$element[$keys[0]].'">'.$button['nombre'].'</button></td>';
                         }
                     }
                 }
                 $html .= '</tr>';
             }
 
-            $html .= '</form>';
+            $html .= '</form></table>';
             
             return $html;
         }
