@@ -1,5 +1,12 @@
-#header, #menu, #logo, #nav{
+*{
     margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+* h1 {
+    font-size: 30px;
+    padding: 13px;
 }
 
 #header{
@@ -8,6 +15,7 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
+    border: 2px solid black;
 }
 
 #header h1{
@@ -21,9 +29,14 @@
     text-align: center;
 }
 
+#menu{
+    border-top: 2px solid black;
+}
+
 #logo{
     width: 30%;
     background-color: green;
+    border-right: 2px solid black;
 }
 
 #logo2 {
@@ -35,24 +48,14 @@
     background-color: blue;
 }
 
-#list ul{
-    margin: 0px;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-}
-
-#sandwich{
+#button{
     display: none;
     position: relative;
 }
 
+@media only screen and (max-width:700px){ 
 
-@media only screen and (max-width:692px){ 
-
-    #sandwich{
+    #button{
         display: block;
     }
 
@@ -69,18 +72,59 @@
     }        
 }
 
-
 #hidden-list{
     display: none;
     position: absolute;
     width: 100%;
     background-color: yellow;
+    outline: 2px solid black;
+    margin-top: 2px;
 }
 
-#sandwich:hover #hidden-list{
+#hidden-list li{
+    border-bottom: 2px solid black;
+}
+
+#hidden-list li:last-child{
+    border-bottom: none;
+}
+
+#button:hover #hidden-list, #hidden-list:hover{
     display: block;
 }
 
 #hidden-list ul{
     list-style: none;
+}
+
+#list ul{
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+}
+
+#list ul li:first-child{
+    border-left: none;
+}
+
+#list ul li{
+    border-left: 2px solid black;
+    flex: 90px;
+}
+
+#main{
+    width: 100%;
+    height: 100%;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+#footer{
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border: 2px solid black;
 }

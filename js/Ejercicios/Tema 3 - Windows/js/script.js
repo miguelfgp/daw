@@ -1,42 +1,9 @@
-// Tipo variables
+// Tipo Navegador
 
-var tipos;
+nombre = navigator.appName;
+version = navigator.appVersion;
 
-tipos = [typeof(x)];
-tipos.push(typeof('Casa'));
-tipos.push(typeof(3));
-tipos.push(typeof(true));
-tipos.push(typeof(''));
-tipos.push(typeof(null));
-tipos.push(typeof(tipos));
-
-text = '<ul>';
-for (i = 0; i < tipos.length; i++){
-    text += '<li>' + tipos[i] + '</li>';
-}
-text += '</ul>';
-
-document.getElementById('tipos').innerHTML = text
-
-function lista(){
-
-    let num;
-    let lista = "<ul>";
-
-    do {
-        if (isNaN(num)) {
-            num = prompt('Introduzca un número');
-        }
-    } while (num != undefined && isNaN(num));
-
-    for (i = 0; i <= num; i++) {
-        lista +=  '<li>' + i + '</li>';
-    }
-
-    lista += '</ul>';
-
-    document.getElementById('lista').innerHTML = lista
-}
+document.getElementById('navegador').innerHTML = nombre + " " + version;
 
 // Operaciones
 
@@ -79,4 +46,22 @@ function calc(){
         alert('El resultado es: ' + eval(num1 + op + num2));
     }   
 
+}
+
+function lista(){
+
+    let num;
+    let lista = "";
+
+    do {
+        if (isNaN(num)) {
+            num = prompt('Introduzca un número');
+        }
+    } while (num != undefined && isNaN(num));
+
+    for (i = 0; i <= num; i++) {
+        lista += i + '<br>';
+    }
+
+    document.getElementById('lista').innerHTML = lista
 }
