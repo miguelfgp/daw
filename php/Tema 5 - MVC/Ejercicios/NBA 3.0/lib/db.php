@@ -32,6 +32,8 @@
                 }
 
                 return $this->array;
+            } else {
+                return $this->query;
             }
         }
     }

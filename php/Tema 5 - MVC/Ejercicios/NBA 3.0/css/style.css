@@ -11,6 +11,22 @@ body, a, input{
     text-align: center;
 }
 
+#form{
+    width: 55%;
+    margin: auto;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+#error{
+    color: red;
+}
+
+#success{
+    color: green;
+}
+
 table{
     text-align: center;
     margin: auto;

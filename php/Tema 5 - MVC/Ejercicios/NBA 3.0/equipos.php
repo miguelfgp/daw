@@ -19,14 +19,27 @@
             </ul>
         </nav>
 
-        <form action="" method="post">
-            <h3>Añadir Equipo</h3>
+        <?php
+            session_start();
+
+            if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
+                echo '<h3 id="error">' . $_SESSION['error'] . '</h3>';
+            }
+
+            if (isset($_SESSION['success']) && !empty($_SESSION['success'])){
+                echo '<h3 id="success">' . $_SESSION['success'] . '</h3>';
+            }
+        ?>
+
+        <h3>Añadir Equipo</h3>
+
+        <form action="" method="post" id="form">
             <label>Equipo: </label>
             <input type="text" name="equipo">
             <label>Ciudad: </label>
             <input type="text" name="ciudad">
                 <?php
-                
+
                     require('lib/nba.php');
                     require('lib/util.php');
 
@@ -44,10 +57,14 @@
 
                 ?>
             <button type="submit" name="insert">Añadir</button>
-        </form>        
+        </form>
+
+        <h3>Modificar o borrar equipo</h3>
         <?php
 
-            // HACER EN UTIL.PHP TABLA EDITABLE DENTRO DE UN FORM
+            
+
+            $refresh = "<META HTTP-EQUIV ='Refresh' Content ='0;'>";
 
             $headers = ['Nombre', 'Ciudad', 'Conferencia', 'División'];
             $equipos = $nba->listaEquiposCompleta();
@@ -57,25 +74,43 @@
 
             echo Utility::arrayToFormTable($headers, $equipos, $campos, $buttons);
 
+
+
             if (isset($_POST['insert'])){
                 
+                $error = '';
                 $nombre = $_POST['equipo'];
                 $ciudad = $_POST['ciudad'];
                 $conferencia = $_POST['conferencia'];
                 $division = $_POST['division'];
 
-                $nba->insertEquipo($nombre, $ciudad, $conferencia, $division);
-                echo "<META HTTP-EQUIV ='Refresh' Content ='0;'>";
+                if (!$nba->insertEquipo($nombre, $ciudad, $conferencia, $division)){
+                    $_SESSION['error'] = 'Inserción del equipo fallida';
+                    $_SESSION['success'] = "";
+                } else {
+                    $_SESSION['success'] = "Inserción del equipo realizada correctamente";
+                    $_SESSION['error'] = "";
+                }
+                echo $refresh;
             }  
 
             if (isset($_POST['delete']) && !empty($_POST['delete'])){
+                $error = '';
                 $equipo = $_POST['delete'];
                 
-                $nba->deleteEquipo($equipo);
-                echo "<META HTTP-EQUIV ='Refresh' Content ='0;'>";
+                if (!$nba->deleteEquipo($equipo)){
+                    $_SESSION['error'] = "Borrado del equipo fallido";
+                    $_SESSION['success'] = "";
+                } else {
+                    $_SESSION['success'] = "Borrado del equipo realizado correctamente";
+                    $_SESSION['error'] = "";
+                }
+
+                echo $refresh;
             }
 
             if (isset($_POST['update']) && !empty($_POST['update'])){
+                $error = '';
                 $equipo = $_POST['update'];
                 
                 $nombre = $_POST[$equipo.'_Nombre'];
@@ -83,10 +118,15 @@
                 $conferencia = $_POST[$equipo.'_Conferencia'];
                 $division = $_POST[$equipo.'_Division'];
 
-                $nba->updateEquipo($equipo, $nombre, $ciudad, $conferencia, $division);
-                echo "<META HTTP-EQUIV ='Refresh' Content ='0;'>";
-            }
-            
+                if (!$nba->updateEquipo($equipo, $nombre, $ciudad, $conferencia, $division)){
+                    $_SESSION['error'] = 'Modificación del equipo fallida';
+                    $_SESSION['success'] = "";
+                } else {
+                    $_SESSION['success'] = "Modificación del equipo realizada correctamente";
+                    $_SESSION['error'] = "";
+                }
+                echo $refresh;
+            }         
         ?>
     </div>
 
