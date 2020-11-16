@@ -66,13 +66,13 @@
                     }
                 } else {
                     if (empty($keys)){
-                        $html .= '<td><input type="text" name="'. $element . '" value="' . $element .'"></td>';
+                        $html .= '<td><input type="text" name="'. $element . '" value="' . $element .'" required></td>';
                         foreach ($buttons as $button){
                             $html .= '<td><button type="submit" name="' . $button['url']. '" value="'.$element[$keys[0]].'">'.$button['nombre'].'</button></td>';
                         }
                     } else {
                         foreach ($keys as $key){
-                            $html .= '<td><input type="text" name="'. $element[$keys[0]].'_'.$key . '" value="' . $element[$key] .'"></td>';
+                            $html .= '<td><input type="text" name="'. $element[$keys[0]].'_'.$key . '" value="' . $element[$key] .'" required></td>';
                         }
                         foreach ($buttons as $button){
                             $html .= '<td><button type="submit" name="' . $button['url']. '" value="'.$element[$keys[0]].'">'.$button['nombre'].'</button></td>';

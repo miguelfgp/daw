@@ -35,9 +35,9 @@
 
         <form action="" method="post" id="form">
             <label>Equipo: </label>
-            <input type="text" name="equipo">
+            <input type="text" name="equipo" required>
             <label>Ciudad: </label>
-            <input type="text" name="ciudad">
+            <input type="text" name="ciudad" required>
                 <?php
 
                     require('lib/nba.php');
@@ -74,59 +74,58 @@
 
             echo Utility::arrayToFormTable($headers, $equipos, $campos, $buttons);
 
-
-
-            if (isset($_POST['insert'])){
-                
-                $error = '';
-                $nombre = $_POST['equipo'];
-                $ciudad = $_POST['ciudad'];
-                $conferencia = $_POST['conferencia'];
-                $division = $_POST['division'];
-
-                if (!$nba->insertEquipo($nombre, $ciudad, $conferencia, $division)){
-                    $_SESSION['error'] = 'Inserción del equipo fallida';
-                    $_SESSION['success'] = "";
-                } else {
-                    $_SESSION['success'] = "Inserción del equipo realizada correctamente";
-                    $_SESSION['error'] = "";
+            if (isset($_POST)){
+                if (isset($_POST['insert']) && !empty($_POST['insert'])){
+                    $nombre = $_POST['equipo'];
+                    $ciudad = $_POST['ciudad'];
+                    $conferencia = $_POST['conferencia'];
+                    $division = $_POST['division'];
+    
+                    if (!$nba->insertEquipo($nombre, $ciudad, $conferencia, $division)){
+                        $_SESSION['error'] = 'Inserción del equipo fallida';
+                        $_SESSION['success'] = "";
+                    } else {
+                        $_SESSION['success'] = "Inserción del equipo realizada correctamente";
+                        $_SESSION['error'] = "";
+                    }
+                    echo $refresh;
+                }  
+    
+                if (isset($_POST['delete']) && !empty($_POST['delete'])){
+                    $equipo = $_POST['delete'];
+                    
+                    if (!$nba->deleteEquipo($equipo)){
+                        $_SESSION['error'] = "Borrado del equipo fallido";
+                        $_SESSION['success'] = "";
+                    } else {
+                        $_SESSION['success'] = "Borrado del equipo realizado correctamente";
+                        $_SESSION['error'] = "";
+                    }
+    
+                    echo $refresh;
                 }
-                echo $refresh;
-            }  
-
-            if (isset($_POST['delete']) && !empty($_POST['delete'])){
-                $error = '';
-                $equipo = $_POST['delete'];
-                
-                if (!$nba->deleteEquipo($equipo)){
-                    $_SESSION['error'] = "Borrado del equipo fallido";
-                    $_SESSION['success'] = "";
-                } else {
-                    $_SESSION['success'] = "Borrado del equipo realizado correctamente";
-                    $_SESSION['error'] = "";
-                }
-
-                echo $refresh;
+    
+                if (isset($_POST['update']) && !empty($_POST['update'])){
+                    $equipo = $_POST['update'];
+                    
+                    $nombre = $_POST[$equipo.'_Nombre'];
+                    $ciudad = $_POST[$equipo.'_Ciudad'];
+                    $conferencia = $_POST[$equipo.'_Conferencia'];
+                    $division = $_POST[$equipo.'_Division'];
+    
+                    if (!$nba->updateEquipo($equipo, $nombre, $ciudad, $conferencia, $division)){
+                        $_SESSION['error'] = 'Modificación del equipo fallida';
+                        $_SESSION['success'] = "";
+                    } else {
+                        $_SESSION['success'] = "Modificación del equipo realizada correctamente";
+                        $_SESSION['error'] = "";
+                    }
+                    echo $refresh;
+                }       
+            } else {
+                $_SESSION['success'] = "";
+                $_SESSION['error'] = "";
             }
-
-            if (isset($_POST['update']) && !empty($_POST['update'])){
-                $error = '';
-                $equipo = $_POST['update'];
-                
-                $nombre = $_POST[$equipo.'_Nombre'];
-                $ciudad = $_POST[$equipo.'_Ciudad'];
-                $conferencia = $_POST[$equipo.'_Conferencia'];
-                $division = $_POST[$equipo.'_Division'];
-
-                if (!$nba->updateEquipo($equipo, $nombre, $ciudad, $conferencia, $division)){
-                    $_SESSION['error'] = 'Modificación del equipo fallida';
-                    $_SESSION['success'] = "";
-                } else {
-                    $_SESSION['success'] = "Modificación del equipo realizada correctamente";
-                    $_SESSION['error'] = "";
-                }
-                echo $refresh;
-            }         
         ?>
     </div>
 
