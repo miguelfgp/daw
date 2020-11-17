@@ -1,0 +1,78 @@
+body{
+    background-color: BlanchedAlmond;
+}
+
+body, a, input{
+    color: Brown;
+}
+
+#main{
+    margin: auto;
+    text-align: center;
+}
+
+#form{
+    width: 55%;
+    margin: auto;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+#error{
+    color: red;
+}
+
+#success{
+    color: green;
+}
+
+table{
+    text-align: center;
+    margin: auto;
+}
+
+th, td, tr{
+    padding: 10px;
+}
+
+th{
+    background-color: Coral;
+}
+
+tr:nth-child(odd){
+    background-color: LightSalmon;
+}
+
+tr:nth-child(even){
+    background-color: WhiteSmoke;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+ul li{
+    list-style: none;
+    padding: 10px;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    background-color: LightSalmon;
+
+}
+
+ul li a{
+    text-decoration: none;
+}
+
+table input{
+    background-color: transparent;
+    border: none;
+    text-align: center;
+}
+
+table input:focus{
+    outline: none;
+}
