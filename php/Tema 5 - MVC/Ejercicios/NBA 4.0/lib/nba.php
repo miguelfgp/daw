@@ -26,7 +26,7 @@ require 'db.php';
             return parent::query('SELECT conferencia FROM equipos GROUP BY conferencia');
         }
 
-        function listaDivision(){
+        function listaDivisiones(){
             return parent::query('SELECT division FROM equipos GROUP BY division');
         }          
 

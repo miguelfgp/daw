@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="equipos.php">Equipos</a></li>
                 <li><a href="resultados.php">Resultados</a></li>
-                <li><a href="listas.php">Jugadores</a></li>
+                <li><a href="jugadores.php">Jugadores</a></li>
                 <li><a href="anotador.php">Max Anotador</a></li>
                 <li><a href="asistente.php">Max Asistente</a></li>
             </ul>
@@ -47,15 +47,23 @@
 
                     $nba = new NBA();
 
-                    $conferencias = $nba->listaConferencias();
-                    $campoConf[] = 'conferencia';
+                    $conferencias = [
+                        'name' => 'conferencia',
+                        'array' => $nba->listaConferencias(),
+                        'fields' => 'conferencia',
+                    ];
+                    
+                    echo '<label>Conferencia: </label>' . Utility::arrayToSelect($conferencias);
 
-                    echo '<label>Conferencia: </label>' . Utility::arrayToSelect('conferencia', $conferencias, $campoConf);
-
-                    $divisiones = $nba->listaDivision();
-                    $campoDiv[] = 'division';
-
-                    echo '<label>División: </label>' . Utility::arrayToSelect('division', $divisiones, $campoDiv);
+                    
+                    $divisiones = [
+                        'name' => 'division',
+                        'array' => $nba->listaDivisiones(),
+                        'fields' => 'division',
+                    ];
+                    
+                    echo '<label>División: </label>' . Utility::arrayToSelect($divisiones);
+                    
 
                 ?>
             <button type="submit" name="insert">Añadir</button>
@@ -64,36 +72,40 @@
         <h3>Modificar o borrar equipo</h3>
         <?php
 
-            
-
             $refresh = "<META HTTP-EQUIV ='Refresh' Content ='0;'>";
 
-            $headers = ['Nombre', 'Ciudad', 'Conferencia', 'División'];
-            $equipos = $nba->listaEquiposCompleta();
-            $campos = ['Nombre', 'Ciudad', 'Conferencia', 'Division'];
-            $buttons = [['nombre' => 'Actualizar','url' => 'update'],
-                    ['nombre' => 'Borrar','url' => 'delete']];
-            $selection = ['fields' => ['Conferencia', 'Division'], 'list' =>[$conferencias, $divisiones]];
+            $equipos = [
+                'headers' => ['Nombre', 'Ciudad', 'Conferencia', 'División'],
+                'array' => $nba->listaEquiposCompleta(),
+                'fields' => [
+                    [
+                        'name' => 'Nombre',
+                        'type' => 'input'
+                    ],
+                    [
+                        'name' => 'Ciudad',
+                        'type' => 'input'
+                    ],
+                    [
+                        'name' => 'Conferencia',
+                        'type' => 'select',
+                        'list' => $conferencias
+                    ],
+                    [
+                        'name' => 'Division',
+                        'type' => 'select',
+                        'list' => $divisiones
+                    ]
+                ],
+                'buttons' => [
+                    ['name' => 'Actualizar','action' => 'update'],
+                    ['name' => 'Borrar','action' => 'delete']
+                ]
+            ];
 
-            /*var_dump($selection);
-
-            foreach ($selection['fields'] as $field){
-                echo $field . '<br>';
-            }
-
-            echo '<br>';
-
-            foreach ($selection['list'] as $list){
-                foreach ($list as $array){
-                    foreach ($array as $field){
-                        echo $field . '<br>';
-                    }
-                }
-            }
-            */
-
-            echo Utility::arrayToEdiTable($headers, $equipos, $campos, $buttons, $selection);
             
+            echo Utility::arrayToEditable($equipos);
+
             if (isset($_POST)){
                 if (isset($_POST['insert'])){
                     $nombre = $_POST['equipo'];

@@ -7,7 +7,7 @@
     <div id="main">
         <h1>Ejercicio Tema 5 (NBA) -  Miguel FGP</h1>
 
-        <h3>Muestra el máximo anotador de un equipo</h3>
+        <h3>Muestra la plantilla de un equipo</h3>
 
         <nav>
             <ul>
@@ -19,7 +19,7 @@
             </ul>
         </nav>
 
-        <form action="anotador.php" method="post">
+        <form action="" method="post">
             <label>Equipo:</label>
                 <?php
                     require('lib/nba.php');
@@ -36,16 +36,26 @@
                     if(isset($_POST['equipo']) && !empty($_POST['equipo'])){
                         $equipo = $_POST['equipo'];
                         $equipos['selected'] = $equipo;
-                        $maxAnotador = $nba->maxAnotador($equipo);
-                        
+                        $plantilla = [
+                            'array' => $nba->listaJugadores($equipo),
+                            'fields' => ['Nombre', 'Procedencia', 'Altura', 'Peso', 'Posicion']
+                        ];
+
+
                         echo Utility::arrayToSelect($equipos);
-                        echo '<h4>' .$maxAnotador['Nombre']. ' - ' .$maxAnotador['Puntos_por_partido']. ' Pts</h4>';
+                        echo '<table><tr><th>Nombre</th><th>Procedencia</th><th>Altura</th><th>Peso</th><th>Posición</th>';
+                        echo Utility::arrayToTable($plantilla);
+                        echo '</table>';
+                        
                     } else {
                         echo Utility::arrayToSelect($equipos);
-                    }
+                    }                    
+
+                    
                 ?>
             <input type="submit" value="Enviar">
         </form>
     </div>
+
 </body>
 </html>

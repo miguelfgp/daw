@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="equipos.php">Equipos</a></li>
                 <li><a href="resultados.php">Resultados</a></li>
-                <li><a href="listas.php">Jugadores</a></li>
+                <li><a href="jugadores.php">Jugadores</a></li>
                 <li><a href="anotador.php">Max Anotador</a></li>
                 <li><a href="asistente.php">Max Asistente</a></li>
             </ul>
@@ -27,24 +27,27 @@
 
                     $nba = new NBA();
 
-                    $equipos = $nba->listaEquipos();
+                    $equipos = [
+                        'name' => 'equipo',
+                        'array' => $nba->listaEquipos(),
+                        'fields' => 'nombre'
+                    ];
 
-                    $campo[] = 'nombre';
+                    if(isset($_POST['equipo']) && !empty($_POST['equipo'])){
+                        $equipo = $_POST['equipo'];
+                        $equipos['selected'] = $equipo;
+                        $maxAsistente = $nba->maxAsistente($equipo);
 
-                    echo Utility::arrayToSelect('equipo', $equipos, $campo);
+                        echo Utility::arrayToSelect($equipos);
+                        echo '<h4>'.$maxAsistente['Nombre'].' - ' .$maxAsistente['Asistencias_por_partido']. ' Assist</h4>';
+                    } else {
+                        echo Utility::arrayToSelect($equipos);
+                    }
+
+                    
                 ?>
             <input type="submit" value="Enviar">
         </form>
-
-        <?php
-
-            if(isset($_POST['equipo']) && !empty($_POST['equipo'])){
-                $equipo = $_POST['equipo'];
-                $maxAsistente = $nba->maxAsistente($equipo);
-
-                echo '<h4>'.$maxAsistente['Nombre'].' - ' .$maxAsistente['Asistencias_por_partido']. ' Assist</h4>';
-            }
-        ?>
     </div>
 
 </body>
