@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="equipos.php">Equipos</a></li>
                 <li><a href="resultados.php">Resultados</a></li>
-                <li><a href="jugadores.php">Jugadores</a></li>
+                <li><a href="listas.php">Jugadores</a></li>
                 <li><a href="anotador.php">Max Anotador</a></li>
                 <li><a href="asistente.php">Max Asistente</a></li>
             </ul>
@@ -25,31 +25,31 @@
                     require('lib/nba.php');
                     require('lib/util.php');
 
-                    $nba = new NBA();
+                    $clubes = new Clubes();
+                    $jugadores = new Jugadores();
 
-                    $equipos = $nba->listaEquipos();
+                    $equipos = $clubes->listaEquipos();
 
-                    if(isset($_POST['equipo']) && !empty($_POST['equipo'])){
-                        $equipo = $_POST['equipo'];
-                        
-                        $plantilla = $nba->listaJugadores($equipo);
-                        $keys = ['Nombre', 'Procedencia', 'Altura', 'Peso', 'Posicion'];
+                    $campo[] = 'nombre';
 
-                        echo Utility::arrayToSelect('equipo', $equipos, 'nombre', $equipo);
-                        echo '<input type="submit" value="Enviar">';
-                        
-                        echo '<table><tr><th>Nombre</th><th>Procedencia</th><th>Altura</th><th>Peso</th><th>Posición</th>';
-                        echo Utility::arrayToTable($plantilla, $keys);
-                        echo '</table>';
-                        
-                    } else {
-                        echo Utility::arrayToSelect('equipo', $equipos, 'nombre');
-                        echo '<input type="submit" value="Enviar">';
-                    }                    
-
-                    
+                    echo Utility::arrayToSelect('equipo', $equipos, $campo);
                 ?>
+            <input type="submit" value="Enviar">
         </form>
+
+        <?php
+
+            if(isset($_POST['equipo']) && !empty($_POST['equipo'])){
+                $equipo = $_POST['equipo'];
+                $plantilla = $jugadores->tablaJugadores($equipo);
+                $campos = ['Nombre', 'Procedencia', 'Altura', 'Peso', 'Posicion'];
+
+                echo '<table><tr><th>Nombre</th><th>Procedencia</th><th>Altura</th><th>Peso</th><th>Posición</th>';
+                echo Utility::arrayToTable($plantilla, $campos);
+                echo '</table>';
+                
+            }
+        ?>
     </div>
 
 </body>

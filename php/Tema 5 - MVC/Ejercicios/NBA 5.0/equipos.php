@@ -35,30 +35,30 @@
 
         <h3>Añadir Equipo</h3>
 
-        <form action="" method="post" id="form">
+        <form action="" method="post">
             <label>Equipo: </label>
-            <input type="text" name="equipo" required>
+            <input type="text" name="equipo">
             <label>Ciudad: </label>
-            <input type="text" name="ciudad" required>
+            <input type="text" name="ciudad">
                 <?php
 
                     require('lib/nba.php');
                     require('lib/util.php');
 
-                    $nba = new NBA();
+                    $clubes = new Clubes();
 
-                    $conferencias = $nba->listaConferencias();
+                    $conferencias = $clubes->listaConferencias();
                     
                     echo '<label>Conferencia: </label>' . Utility::arrayToSelect('conferencia', $conferencias, 'conferencia');
 
-                    $divisiones = $nba->listaDivisiones();
+                    $divisiones = $clubes->listaDivisiones();
                     
                     echo '<label>División: </label>' . Utility::arrayToSelect('division', $divisiones, 'division');
                     
 
                 ?>
             <button type="submit" name="insert">Añadir</button>
-        </form>
+
 
         <h3>Modificar o borrar equipo</h3>
         <?php
@@ -67,7 +67,7 @@
 
             
             $headers = ['Nombre', 'Ciudad', 'Conferencia', 'División'];
-            $equipos = $nba->listaEquiposCompleta();
+            $equipos = $clubes->tablaEquipos();
             $keys = [
                 [
                     'name' => 'Nombre',
@@ -100,28 +100,34 @@
 
             if (isset($_POST)){
                 if (isset($_POST['insert'])){
-                    $nombre = $_POST['equipo'];
-                    $ciudad = $_POST['ciudad'];
-                    $conferencia = $_POST['conferencia'];
-                    $division = $_POST['division'];
-
-                    $query = $nba->insertEquipo($nombre, $ciudad, $conferencia, $division);
-
-                    if (!$query){
+                    if (!empty($_POST['equipo'])){
+                        $nombre = $_POST['equipo'];
+                        $ciudad = $_POST['ciudad'];
+                        $conferencia = $_POST['conferencia'];
+                        $division = $_POST['division'];
+    
+                        $query = $clubes->insertEquipo($nombre, $ciudad, $conferencia, $division);
+    
+                        if (!$query){
+                            $_SESSION['error'] = 'Inserción del equipo fallida';
+                            $_SESSION['success'] = "";
+                        } else {
+                            $_SESSION['success'] = "Inserción del equipo realizada correctamente";
+                            $_SESSION['error'] = "";
+                        }
+                        echo $refresh;
+                    } else {
                         $_SESSION['error'] = 'Inserción del equipo fallida';
                         $_SESSION['success'] = "";
-                    } else {
-                        $_SESSION['success'] = "Inserción del equipo realizada correctamente";
-                        $_SESSION['error'] = "";
                     }
-                    echo $refresh;
+                    
                 }  
     
                 if (isset($_POST['delete']) && !empty($_POST['delete'])){
                     $equipo = $_POST['delete'];
                     $equipo = str_replace('_', ' ', $equipo);
                     
-                    $query = $nba->deleteEquipo($equipo);
+                    $query = $clubes->deleteEquipo($equipo);
 
                     if (!$query){
                         $_SESSION['error'] = "Borrado del equipo fallido";
@@ -143,7 +149,7 @@
                     $division = $_POST[$equipo.'_Division'];
                     $equipo = str_replace('_', ' ', $equipo);
 
-                    $query = $nba->updateEquipo($equipo, $nombre, $ciudad, $conferencia, $division);
+                    $query = $clubes->updateEquipo($equipo, $nombre, $ciudad, $conferencia, $division);
     
                     if (!$query){
                         $_SESSION['error'] = 'Modificación del equipo fallida';
@@ -156,6 +162,7 @@
                 }       
             }
         ?>
+        </form>
     </div>
 
 </body>

@@ -24,10 +24,11 @@
                     require('lib/nba.php');
                     require('lib/util.php');
 
-                    $nba = new NBA();
-
-                    $equipos = $nba->listaEquipos();
-                    $temporadas = $nba->listaTemp();
+                    $resultados = new Resultados();
+                    $clubes = new Clubes();
+                    
+                    $equipos = $clubes->listaEquipos();
+                    $temporadas = $resultados->listaTemp();
 
 
                     if(isset($_POST['equipo_local']) && !empty($_POST['equipo_local'])
@@ -38,7 +39,7 @@
                         $equipoVisitante = $_POST['equipo_visitante'];
                         $temporada = $_POST['temporada'];
                         
-                        $partidos = $nba->partidosTemp($equipoLocal, $equipoVisitante, $temporada);
+                        $partidos = $resultados->partidosTemp($equipoLocal, $equipoVisitante, $temporada);
                         $keys = ['equipo_local', 'puntos_local', 'puntos_visitante', 'equipo_visitante', 'temporada'];
         
                         echo '<div class="option"><label>Equipo Local: </label>' . Utility::arrayToSelect('equipo_local', $equipos, 'nombre', $equipoLocal) . '</div><br>';

@@ -1,8 +1,8 @@
 <?php
 
-    require 'query.php';
+require 'db.php';
 
-    class NBA extends Query{
+    class NBA extends DB{
         
         private $host = 'localhost';
         private $user = 'root';
@@ -13,107 +13,88 @@
         function __construct(){
             parent::__construct($this->host, $this->user, $this->pass, $this->schema, $this->port);
         }
+    }
 
-        function listaEquipos(){
-            return parent::select('equipos', 'nombre');
-        }
+    class Resultados extends NBA{
+        
+        function __construct(){
+            parent::__construct();
+        }    
 
-        function listaEquiposCompleta(){
-            return parent::select('equipos');
-        }
-
-        function listaConferencias(){
-            return parent::select('equipos', 'conferencia', null, 'conferencia');
-        }
-
-        function listaDivisiones(){
-            return parent::select('equipos', 'division', null, 'division');
-        }          
-
-        function listaPartidos($equipo){
-            return parent::select(
-                'partidos',
-                ['equipo_local', 'puntos_local', 'puntos_visitante', 'equipo_visitante'], 
-                'equipo_local = "'.$equipo.'" OR equipo_visitante = "'.$equipo.'"');
-        }
-
-        function listaJugadores($equipo){
-            return parent::select(
-                'jugadores', 
-                ['Nombre', 'Procedencia', 'Altura', 'Peso', 'Posicion'],
-                'Nombre_equipo = "'.$equipo.'"');
+        function partidos($equipo){
+            return parent::query('SELECT equipo_local, puntos_local, puntos_visitante, equipo_visitante FROM partidos WHERE equipo_local = "'.$equipo.'" OR equipo_visitante = "'.$equipo.'"');
+        }   
+        
+        function partidosTemp($equipoLocal, $equipoVisitante, $temporada){
+            return parent::query('SELECT equipo_local, puntos_local, puntos_visitante, equipo_visitante, temporada FROM partidos WHERE equipo_local = "'.$equipoLocal.'" AND equipo_visitante = "'.$equipoVisitante.'" AND temporada = "'.$temporada.'"');
         }
 
         function listaTemp(){
-            return parent::select('partidos', 'temporada', null, 'temporada');
-        }    
-        
-        function maxAnotador($equipo){
-            return parent::select(
-                'jugadores', 
-                ['Nombre', 'Puntos_por_partido'],
-                'Nombre_equipo = "'.$equipo.'"',
-                null,
-                'Puntos_por_partido',
-                true,
-                1,
-                'estadisticas',
-                'jugadores.codigo',
-                'estadisticas.jugador'
-            );
-        }    
-        
-        function maxAsistente($equipo){
-            return parent::select(
-                'jugadores', 
-                ['Nombre', 'Asistencias_por_partido'],
-                'Nombre_equipo = "'.$equipo.'"',
-                null,
-                'Asistencias_por_partido',
-                true,
-                1,
-                'estadisticas',
-                'jugadores.codigo',
-                'estadisticas.jugador'
-            );
+            return parent::query('SELECT temporada FROM partidos GROUP BY temporada');
+        }   
+
+
+    }
+
+    class Clubes extends NBA{
+
+        function __construct(){
+            parent::__construct();
         }
 
-        //table, $fields = null, $joinTable = null, $joinColumn = null, $tableColumn = null, $conditions = null, $group = null, $order = null, $desc = false, $limit = null
-        
-        function partidosTemp($equipoLocal, $equipoVisitante, $temporada){
-            return parent::select(
-                'partidos', 
-                ['equipo_local', 'puntos_local', 'puntos_visitante', 'equipo_visitante', 'temporada'],
-                ['equipo_local = "'.$equipoLocal.'"', 'equipo_visitante = "'.$equipoVisitante.'"', 'temporada = "'.$temporada.'"'],
-            );
+        function listaEquipos(){
+            return parent::query('SELECT nombre FROM equipos');
         }
+
+        function tablaEquipos(){
+            return parent::query('SELECT * FROM equipos');
+        }
+
+        function listaConferencias(){
+            return parent::query('SELECT conferencia FROM equipos GROUP BY conferencia');
+        }
+
+        function listaDivisiones(){
+            return parent::query('SELECT division FROM equipos GROUP BY division');
+        }          
 
         function insertEquipo($nombre, $ciudad, $conferencia, $division){
-            return parent::insert(
-                'equipos',
-                ['Nombre', 'Ciudad', 'Conferencia', 'Division'],
-                [$nombre, $ciudad, $conferencia, $division]
-            );
+            return parent::query('INSERT INTO equipos (Nombre, Ciudad, Conferencia, Division) VALUES ("'.$nombre.'", "'.$ciudad.'", "'.$conferencia.'", "'.$division.'")');
         }
 
         function updateEquipo($equipo, $nombre, $ciudad, $conferencia, $division){
-
-            return parent::update(
-                'equipos',
-                ['Nombre', 'Ciudad', 'Conferencia', 'Division'],
-                [$nombre, $ciudad, $conferencia, $division],
-                'Nombre = "'.$equipo.'"'
-            );
+            return parent::query('UPDATE equipos SET Nombre = "'.$nombre.'", Ciudad = "'.$ciudad.'", Conferencia = "'.$conferencia.'", Division = "'.$division.'" WHERE (Nombre = "'.$equipo.'")');
         }
 
         function deleteEquipo($equipo){
-            return parent::delete(
-                'equipos',
-                'Nombre = "'.$equipo.'"'
-            );
+            return parent::query('DELETE FROM equipos WHERE (Nombre = "'.$equipo.'")');
         }
 
 
     }
+
+    class Jugadores extends NBA{
+        
+        function __construct(){
+            parent::__construct();
+        }
+        
+        function listaPosiciones(){
+            return parent::query('SELECT posicion FROM jugadores GROUP BY posicion');
+        }
+
+        function tablaJugadores($equipo){
+            return parent::query('SELECT Nombre, Procedencia, Altura, Peso, Posicion FROM jugadores WHERE Nombre_equipo = "'.$equipo.'"');
+        }
+        
+        function maxAnotador($equipo){
+            return parent::query('SELECT Nombre, Puntos_por_partido FROM jugadores JOIN estadisticas ON jugadores.codigo = estadisticas.jugador WHERE Nombre_equipo = "'.$equipo.'" ORDER BY Puntos_por_partido DESC LIMIT 1');
+        }    
+        
+        function maxAsistente($equipo){
+            return parent::query('SELECT Nombre, Asistencias_por_partido FROM jugadores JOIN estadisticas ON jugadores.codigo = estadisticas.jugador WHERE Nombre_equipo = "'.$equipo.'" ORDER BY Asistencias_por_partido DESC LIMIT 1');
+        }
+
+    }    
 
 ?>

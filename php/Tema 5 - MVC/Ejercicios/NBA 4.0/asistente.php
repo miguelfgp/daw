@@ -25,13 +25,14 @@
                     require('lib/nba.php');
                     require('lib/util.php');
 
-                    $nba = new NBA();
+                    $jugadores = new Jugadores();
+                    $clubes = new Clubes();
 
-                    $equipos = $nba->listaEquipos();
+                    $equipos = $clubes->listaEquipos();
 
                     if(isset($_POST['equipo']) && !empty($_POST['equipo'])){
                         $equipo = $_POST['equipo'];
-                        $maxAsistente = $nba->maxAsistente($equipo);
+                        $maxAsistente = $jugadores->maxAsistente($equipo);
 
                         echo Utility::arrayToSelect('equipo', $equipos, 'nombre', $equipo);
                         echo '<input type="submit" value="Enviar">';

@@ -82,15 +82,9 @@
                 'buttons': Botones que enviarán la información recibida.
         */        
 
-        // EN NOMBRES CON 2 PALABRAS, SUSTITUYE LOS ESPACIOS CON BARRAS. HAY QUE CAMBIAR LOS NOMBRES MANUALMENTE CON LAS BARRAS
+        static function arrayToEditable($array, $buttons, $headers = null, $keys = null){
 
-        static function arrayToEditable($array, $buttons, $headers = null, $keys = null, $action = null){
-
-            if (!empty($action)){
-                $html = '<form action="'.$action.'" method="post"><table>';
-            } else {
-                $html = '<form action="" method="post"><table>';
-            }
+            $html = '<table>';
 
             if (!empty($headers)){
                 $html .= '<tr>';
@@ -105,7 +99,7 @@
 
                 if (empty($keys)){
 
-                    $html .= '<td><input type="text" name="'. $element . '" value="' . $element .'" required></td>';
+                    $html .= '<td><input type="text" name="'. $element . '" value="' . $element .'"></td>';
 
                     foreach ($buttons as $button){
                         $html .= '<td><button type="submit" name="' . $button['action']. '" value="'.$element.'">'.$button['name'].'</button></td>';
@@ -113,7 +107,7 @@
                     
                 } else if (is_string($keys)){
 
-                    $html .= '<td><input type="text" name="'. $element[$keys] . '" value="' . $element[$keys] .'" required></td>';
+                    $html .= '<td><input type="text" name="'. $element[$keys] . '" value="' . $element[$keys] .'"></td>';
 
                     foreach ($buttons as $button){
                         $html .= '<td><button type="submit" name="' . $button['action']. '" value="'.$element[$keys].'">'.$button['name'].'</button></td>';
@@ -126,8 +120,11 @@
                     foreach ($keys as $key){
 
                             if ($key['type'] == 'input'){
-                                $html .= '<td><input type="text" name="'. $elementName.'_'.$key['name'] . '" value="' . $element[$key['name']] .'" required></td>';
-                            } else if ($key['type'] == 'select'){
+                                $html .= '<td><input type="text" name="'. $elementName.'_'.$key['name'] . '" value="' . $element[$key['name']] .'"></td>';
+                            } else if ($key['type'] == 'hidden'){
+                                $html .= '<input type="hidden" name="'. $elementName.'_'.$key['name'] . '" value="' . $element[$key['name']] .'">';
+                            }
+                            else if ($key['type'] == 'select'){
                                 
                                 $name = $elementName.'_'.$key['name'];
                                 $field = $key['field'];
@@ -145,7 +142,7 @@
                 $html .= '</tr>';
             }
 
-            $html .= '</form></table>';
+            $html .= '</table>';
             
             return $html;
         }
