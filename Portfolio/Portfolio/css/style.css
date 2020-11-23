@@ -1,0 +1,283 @@
+@font-face{
+    font-family: "HK Grotesk";
+    src: url("../fonts/HKGrotesk2.41/OTF/HKGrotesk-Regular.otf");
+}
+
+@font-face{
+    font-family: "HK Grotesk Light";
+    src: url("../fonts/HKGrotesk2.41/OTF/HKGrotesk-Light.otf");
+}
+
+/*
+* h1 {
+    font-size: 30px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding-block-start: 0px;
+    padding-block-end: 0px;
+    padding: 13px;
+}
+
+* h2 {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding-block-start: 0px;
+    padding-block-end: 0px;
+}
+
+* ul{
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+* a{
+    text-decoration: none;
+    color: black;
+}
+
+#header{
+    width: 100%;
+    background-color: red;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#header h1{
+    text-align: center;
+}
+
+#menu{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#menu{
+    border-top: 2px solid black;
+}
+
+#logo{
+    width: 15%;
+    background-color: green;
+    border-right: 2px solid black;
+}
+
+#logo2 {
+    display: none;
+}
+
+#nav{
+    width: 85%;
+    background-color: blue;
+}
+
+#button{
+    display: none;
+    position: relative;
+}
+
+@media only screen and (max-width:1295px){ 
+
+    #logo1 {
+        display: none;
+    }
+
+    #logo2 {
+        display: block;
+    }
+
+    #logo, #aside{
+        min-width: 189px;
+    }
+}
+
+@media only screen and (max-width:732px){ 
+
+    #button{
+        display: block;
+    }
+
+    #list{
+        display: none;
+    }    
+}
+
+
+
+
+#hidden-list{
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: yellow;
+    border-right: 2px solid black;
+    margin-top: 2px;
+    z-index: 1;
+}
+
+#hidden-list li{
+    border-bottom: 2px solid black;
+}
+
+#button:hover #hidden-list, #hidden-list:hover{
+    display: block;
+}
+
+#hidden-list ul{
+    list-style: none;
+}
+
+#list ul{
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+}
+
+#list ul li:first-child{
+    border-left: none;
+}
+
+#list ul li{
+    border-left: 2px solid black;
+    flex: 90px;
+}
+
+#content{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+#aside{
+    text-align: center;
+    border-right: 2px solid black;
+    width: 15%;
+    background-color: darkgrey;
+}
+
+#aside ul li{
+    padding: 5px 0px 5px 0px;
+}
+
+
+#aside-list{
+    width: 100%;
+}
+
+
+#aside ul li:nth-child(even){
+    background-color: rgb(190, 190, 190);
+}
+
+#aside ul li:nth-child(odd){
+    background-color: lightgray;
+}
+
+#section{
+    width: 85%;
+}
+
+#article{
+    position: relative;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#footer{
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: rgb(254,254,254);
+    text-align: center;
+    border: 2px solid black;
+}
+
+*/
+
+/* CSS NUEVO */
+
+body{
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: "HK Grotesk Light";
+}
+
+#title{
+    float: left;
+    width: 60%;
+}
+
+#title h1{
+    display: inline;
+    font-size: 100px;
+    margin: 10px;
+}
+
+#title, #name, #P, #G, #F{
+    display: inline;
+}
+
+
+@media only screen and (max-width:1100px){ 
+
+    #P h1:first-child{
+        display: block;
+    }
+}
+
+@media only screen and (max-width:1000px){ 
+
+    #G h1:first-child{
+        display: block;
+    }
+}
+
+
+@media only screen and (max-width:900px){ 
+
+    #F h1:first-child{
+        display: block;
+    }
+}
+
+#menu{
+    float: right;
+    width: 40%;
+}
+
+#menu ul{
+    float: right;
+    justify-content: right;
+    display: inline;
+    list-style: none;
+    /*flex-direction: row;*/
+    font-size: 25px;
+}
+
+#menu ul li{
+    display: inline;
+    margin: 20px;
+}
+
+@media only screen and (max-width:850px){ 
+
+    #title, #menu{
+        width: 100%;
+    }
+
+    #menu ul{
+        flex-direction: column;
+    }
+
+}
