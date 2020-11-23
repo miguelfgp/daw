@@ -217,43 +217,64 @@ body{
     position: relative;
     float: left;
     width: 60%;
-    top: 0px;
-    -webkit-transition: top 1s ease-in-out;
-    -moz-transition: top 1s ease-in-out;
-    -o-transition: top 1s ease-in-out;
-    transition: top 1s ease-in-out;
 }
 
 #title h1{
-    display: inline;
-    font-size: 100px;
+    /*display: inline;*/
+    font-size: 150px;
     margin: 10px;
 }
 
 #title, #name, #P, #G, #F{
-    display: inline;
+    /*display: inline;*/
+    position: relative;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
+#P{
+    left: 780px;
+    top: -593px;
+}
+
+#G{
+    left: 615px;
+    top: -395px;
+}
+
+#F{
+    left: 480px;
+    top: -198px;
 }
 
 
-@media only screen and (max-width:1100px){ 
+@media only screen and (max-width:1370px){ 
 
-    #P h1:first-child{
-        display: block;
+    #P{
+        /*display: block;*/
+        left: 0px;
+        top: 0px;
     }
 }
 
-@media only screen and (max-width:1000px){ 
+@media only screen and (max-width:1225px){ 
 
-    #G h1:first-child{
-        display: block;
+    #G{
+        /*display: block;*/
+        left: 0px;
+        top: 0px;
     }
 }
 
 
-@media only screen and (max-width:900px){ 
+@media only screen and (max-width:1075px){ 
 
-    #F h1:first-child{
-        display: block;
+    #F{
+        /*display: block;*/
+        left: 0px;
+        top: 0px;
     }
 }
 
