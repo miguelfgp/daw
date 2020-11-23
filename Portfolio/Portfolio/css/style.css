@@ -214,8 +214,14 @@ body{
 }
 
 #title{
+    position: relative;
     float: left;
     width: 60%;
+    top: 0px;
+    -webkit-transition: top 1s ease-in-out;
+    -moz-transition: top 1s ease-in-out;
+    -o-transition: top 1s ease-in-out;
+    transition: top 1s ease-in-out;
 }
 
 #title h1{
@@ -252,16 +258,22 @@ body{
 }
 
 #menu{
+    position: relative;
     float: right;
     width: 40%;
+    top: 0px;
+    -webkit-transition: top 1s ease-in-out;
+    -moz-transition: top 1s ease-in-out;
+    -o-transition: top 1s ease-in-out;
+    transition: top 1s ease-in-out;
 }
 
 #menu ul{
     float: right;
     justify-content: right;
-    display: inline;
+    display: flex;
     list-style: none;
-    /*flex-direction: row;*/
+    flex-direction: row;
     font-size: 25px;
 }
 
@@ -272,8 +284,14 @@ body{
 
 @media only screen and (max-width:850px){ 
 
+    /*
     #title, #menu{
         width: 100%;
+    }
+    */
+
+    #menu{
+        top: 550px;
     }
 
     #menu ul{
