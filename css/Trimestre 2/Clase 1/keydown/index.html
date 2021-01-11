@@ -1,0 +1,18 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>Escribe aquí: <input type="text">
+    <p>Verás el texto, pero debajo el código de tecla usada cada vez.</p>
+    <div></div>
+    <script>
+        $(document).ready(function () {
+            $("input").keydown(function (event) {
+                $("div").html("Key: " + event.which);
+            }); 
+        });
+    </script>
+</body>
+
+</html>

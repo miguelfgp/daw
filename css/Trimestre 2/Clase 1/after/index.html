@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <p id="p1">Párrafo con texto inicial.</p>
+    <p>Pinche para insertar luego del párrafo inicial.</p>
+    <button onclick="agregarDetras()">Insertar después</button>
+    <script>
+        $(document).ready(function () {
+            $(document).on('keydown', function (event) {
+                if (event.returnValue == 116){
+                    event.preventDefault();
+                    i++;
+                }
+                $("div").html("Has pulsado F5 " + i + " veces... ¡Pero no se ha actualizado!");
+            }); 
+        });
+    </script>
+</body>

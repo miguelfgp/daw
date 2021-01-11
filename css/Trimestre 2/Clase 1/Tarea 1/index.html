@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>Intenta actualizar la página</p>
+    <div></div>
+    <script>
+        let i = 0;
+        $(document).ready(function () {
+            $(document).on('keydown', function (event) {
+                if (event.which == 116){
+                    event.preventDefault();
+                    i++;
+                }
+                $("div").html("Has pulsado F5 " + i + " veces... ¡Pero no se ha actualizado!");
+            }); 
+        });
+    </script>
+</body>
+
+</html>

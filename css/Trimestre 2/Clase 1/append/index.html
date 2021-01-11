@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <p>Primer párrafo del div.</p>
+        <p>Segundo párrafo del div.</p>
+        <ol>
+            <li>elemento en lista</li>
+            <li>otro en lista</li>
+        </ol>
+    </div>
+    
+    <p>Párrafo fuera del div.</p>
+    <button id="btn1">Añadir texto</button>
+    <button id="btn2">Añadir a lista</button>
+    <button id="btn3">Añadir a DIV</button>
+    <script>  
+        $(document).ready(function () { 
+            $("#btn1").click(function () { 
+                $("p").append(" <b>Texto añadido en P</b>."); 
+            }); 
+            
+            $("#btn2").click(function () { 
+                $("ol").append("<li>Elemento añadido a lista</li>"); 
+            }); 
+            
+            $("#btn3").click(function () { 
+                $("div").append(" <p>Párrafo añadido a DIV</p>"); 
+            }); 
+        });
+    </script>
+</body>
