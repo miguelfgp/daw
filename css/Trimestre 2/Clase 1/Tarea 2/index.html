@@ -1,37 +1,35 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css"">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <div>
+    <div id="center">
         <span id="lista1"></span>
-
         <span id="X">X</span>
-
         <span id="lista2"></span>
     </div>
 
     <script>
         let number;
-        let lista1;
-        let lista2;
+        let span;
+        let lista;
 
         $(document).on('keypress', function (event) {
 
             number = parseInt(String.fromCharCode(event.which));
-
+            
             if (number < 5){
-                $("#lista1").append(number);
-                lista1 = Array.from($("#lista1").text());
-                console.log(lista1);
-                $("#lista1").html(lista1.sort());
+                span = "#lista1";
             } else {
-                $("#lista2").after(number);
-                lista2 = Array.from($("#lista2").text());
-                console.log(lista2);
-                $("#lista2").html(lista2.sort());
+                span = "#lista2";
             }
+
+            $(span).append(number);
+            lista = Array.from($(span).text());
+            $(span).html(lista.sort());
+
         });
 
     </script>
