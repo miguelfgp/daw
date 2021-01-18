@@ -25,7 +25,7 @@
             }
 
             echo '<form action="sesion.php" method="post">';
-            echo '<button value="borrar">Borrar sesión</button>';
+            echo '<button name="borrar">Borrar sesión</button>';
             echo '</form>';
         }
     ?>

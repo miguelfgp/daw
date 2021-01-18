@@ -9,6 +9,11 @@
 }
 
 /*
+body{
+    overflow-x: hidden;
+}
+
+
 * h1 {
     font-size: 30px;
     margin-block-start: 0px;
@@ -215,8 +220,7 @@ body{
 
 #title{
     position: relative;
-    float: left;
-    width: 60%;
+    width: auto
 }
 
 #title h1{
@@ -231,92 +235,126 @@ body{
     -moz-transition: 1s;
     -o-transition: 1s;
     -webkit-transition: 1s;
-    transition: 1s;
+    transition: 1s ease-in-out;
 }
 
 #P{
-    left: 780px;
-    top: -593px;
+    margin-left: 778px;
+    top: -594px;
 }
 
 #G{
-    left: 615px;
-    top: -395px;
+    margin-left: 622px;
+    top: -396px;
 }
 
 #F{
-    left: 480px;
+    margin-left: 487px;
     top: -198px;
-}
-
-
-@media only screen and (max-width:1370px){ 
-
-    #P{
-        /*display: block;*/
-        left: 0px;
-        top: 0px;
-    }
-}
-
-@media only screen and (max-width:1225px){ 
-
-    #G{
-        /*display: block;*/
-        left: 0px;
-        top: 0px;
-    }
-}
-
-
-@media only screen and (max-width:1075px){ 
-
-    #F{
-        /*display: block;*/
-        left: 0px;
-        top: 0px;
-    }
 }
 
 #menu{
     position: relative;
-    float: right;
-    width: 40%;
-    top: 0px;
-    -webkit-transition: top 1s ease-in-out;
-    -moz-transition: top 1s ease-in-out;
-    -o-transition: top 1s ease-in-out;
-    transition: top 1s ease-in-out;
+    margin-right: 29px;
+    width: auto
 }
 
-#menu ul{
-    float: right;
-    justify-content: right;
-    display: flex;
-    list-style: none;
-    flex-direction: row;
+#menu h4{
+    text-align: right;
     font-size: 25px;
+    font-weight: normal
 }
 
-#menu ul li{
-    display: inline;
-    margin: 20px;
+#js, #css, #server, #contact{
+    position: relative;
+    transition: 1s;
+    /*padding-bottom: 20px;*/
 }
 
-@media only screen and (max-width:850px){ 
 
-    /*
-    #title, #menu{
-        width: 100%;
+#js{
+    top: -750px;
+    margin-right: 477px;
+}
+
+#css{
+    margin-right: 341px;
+    top: -815px
+}
+
+#server{
+    margin-right: 178px;
+    top: -879px
+}
+
+#contact{
+    top: -943px
+}
+
+
+@media only screen and (max-width:97em){ 
+
+    #P{
+        margin-left: 0px;
+        top: -396px;
     }
-    */
 
-    #menu{
-        top: 550px;
+    #js{
+        top: 0px;
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-width:76em){ 
+
+    #G, #P{
+        top: -198px;
     }
 
-    #menu ul{
-        flex-direction: column;
+    #G{
+        margin-left: 0px;
     }
 
+    #css{
+        top: 0px;
+        margin-right: 0px;
+    }
+}
+
+
+@media only screen and (max-width:58em){ 
+
+    #F, #G, #P{
+        top: 0px;
+    }
+
+    #F{
+        margin-left: 0px;
+    }
+
+    #server{
+        top: 0px;
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-width:40em){ 
+
+    #contact{
+        top: 0px;
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-height:61em){ 
+
+    #title h1{
+        font-size: 90px;
+    }
+}
+
+
+#footer{
+    position: relative;
+    top: 100px;
 }
