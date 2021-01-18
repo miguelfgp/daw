@@ -18,7 +18,7 @@
 
         $(document).on('keypress', function (event) {
 
-            number = parseInt(String.fromCharCode(event.which));
+            number = parseInt(String.fromCharCode(event.charCode));
             
             if (number < 5){
                 span = "#lista1";

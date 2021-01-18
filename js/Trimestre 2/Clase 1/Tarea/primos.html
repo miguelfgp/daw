@@ -14,16 +14,16 @@
 
     let txt = "";
     let primo = true;
-    let number = document.getElementById("id1").value
+    let num = document.getElementById("id1").value
 
-    if (document.getElementById("id1").validity.rangeUnderflow) {
+    if (num.validity.rangeUnderflow) {
       txt = "Número demasiado pequeño";
-    } else if (document.getElementById("id1").validity.rangeOverflow) {
+    } else if (num.validity.rangeOverflow) {
       txt = "Número demasiado grande";
     } else {
 
       for (i = 2; i < number; i++){
-        if (number % i == 0){
+        if (num % i == 0){
           primo = false;
         }
       }

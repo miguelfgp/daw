@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--
+HTML
+contenidos: 2DAW - DWEC
+autor: Carlos Boni
+fecha: Enero 2021
+-->
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	<!-- importante SEO para la etiqueta del navegador -->
+	<title>2DAW-DWEC-UD5 - Carlos Boni</title>
+	
+	<!-- una fuente de Google -->
+	<link rel="preconnect" href="https://fonts.gstatic.com"/>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet"/>
+	
+	<!-- una hoja de estilos externa-->
+	
+	<!-- una hoja de estilos personalizada-->
+	<link href="00-modelo.css" rel="stylesheet"/>
+	
+	<!-- iconos u otros elementos externos -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+	
+	<!-- solo aquellos estilos que solo aplican a esta pagina -->
+    <style>
+		body {
+			background: rgba(0, 0, 128, 0.1) /* Azul al 10% */
+		}
+	</style>
+	
+	<!-- scripts externos de librerias que usaremos, por ejemplo Bootstrap o JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<!-- scripts externos de desarrollo propio en Javascript o JQuery -->
+	<script src="00-modelo.js"></script>
+	
+	<!-- scripts personalizados Javascript o JQuery -->
+	<script>
+		// aqui el codigo ...
+	</script>
+</head>
+
+
+<body>
+
+	<!-- cabecera de pagina -->
+	<header>
+		<h1>Expresiones Regulares con Javascript</h1>
+		<h2>Ejemplo 02: añadimos metodo .exec</h2>
+		<h3>Boolean + String</h2>
+		<br/>
+	</header>
+	
+	<!-- bloque de contenido de la pagina -->
+	<main>
+		<p>Al pinchar se muestra el prototipo del objeto de tipo función creado al usar el constructor.</p>
+		<p>Y como resultado el que devuelve el método test() cuando busca un patrón dentro de una cadena.</p>
+		<p>Devuelve true porque encuentra la cadena "@" (si no estuviera, sería false).</p>
+		<p>Luego devuelve la cadena encontrada.</p>
+		<p>Con Expresiones Regulares se pueden validar entradas personalizadas de datos en formularios.</p>
+		<p>Y se pueden obtener subcadenas de distinta dificultad (nombres, emails, etc...)</p>
+		<br/>
+		<button onclick="seAnaliza()">Procesar</button>
+		<br/>
+		<p id="contenido"></p>
+	</main>
+
+
+	<!-- pie de pagina -->
+	<footer>
+		<br/><br/><br/>
+		<div>&copy; 2020 <a href="https://carlosboni.com" target="_blank">Prof. Carlos Boni</a></div>
+	</footer>
+
+	<script>
+		// seccion de codigo javascript
+		function seAnaliza() {
+		  var cadena = "He puesto una @ en esta cadena";
+		  var patron = new RegExp("@");
+		  var proto = patron.constructor;
+		  var encuentra = patron.test(cadena);
+		  var subcadena = patron.exec(cadena);
+		  document.getElementById("contenido").innerHTML = ' PROTOTIPO: ***' +  proto+ '*** RESULTADO: ***' +  encuentra+ '***' +  subcadena+ '***';
+		}
+
+	</script>
+</body>
+</html>
