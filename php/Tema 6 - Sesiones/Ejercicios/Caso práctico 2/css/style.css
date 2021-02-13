@@ -60,3 +60,15 @@ ul li div{
     flex-flow: column;
     align-items: center;
 }
+
+input{
+    text-align: center;
+}
+
+.error{
+    color: red;
+}
+
+.no_error{
+    color:green;
+}

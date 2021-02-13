@@ -17,14 +17,19 @@
             }
         }
 
-        function query($query){
+        function query($query, $field=false){
             $this->query = $this->connect->query($query);
 
             if (is_object($this->query)){
                 $this->array = [];
 
                 while ($result = $this->query->fetch_assoc()){
-                    $this->array[] = $result;
+                    if ($field){
+                        $this->array[] = $result[$field];
+                    } else {
+                        $this->array[] = $result;
+                    }
+                    
                 }
 
                 if (count($this->array) == 1){

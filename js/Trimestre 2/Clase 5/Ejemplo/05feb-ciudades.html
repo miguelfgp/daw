@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--
+HTML
+módulo: Lenguajes de Marcas
+autor: Carlos Boni
+fecha: Febrero 2021
+-->
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	<!-- importante SEO para la etiqueta del navegador -->
+	<title>CSS: Position</title>
+	
+	
+	<!-- solo aquellos estilos que solo aplican a esta pagina -->
+    <style>
+
+		* {
+			color:rgba(0,0,0,0.4);
+		}
+
+		em {
+			font-size:2em;
+			color:rgba(0,0,0,1);
+			background-color:rgba(0,0,0,0.2);
+		  
+		}
+
+		li {
+			border: 1px solid;
+			font-size:20px;
+			padding-top:5px;
+			padding-bottom:5px,
+		}
+
+		li.diferente {
+		  position: static;
+		  color:black;
+		  font-weight:900;
+		  background-color:rgba(0,255,0,0.4);
+		  top: 40px;
+		  left: 120px;
+		}
+	</style>
+	
+	<!-- scripts externos de librerias que usaremos, por ejemplo Bootstrap o JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+</head>
+<body>
+
+	<!-- cabecera de pagina -->
+	<header>
+		<h1>AJAX</h1>
+		<h2>consulta clima de ciudades </h2>
+		<h3>SOLUCIÓN PROPUESTA </h3>
+	</header>
+	
+	<!-- bloque de contenido de la pagina -->
+	<main>
+		<br/>
+			<label for="pos">Elija ciudad:</label>
+			<select name="pos" id="pos">
+				<option value="2514256">Málaga</option>
+				<option value="3128760">Barcelona</option>
+				<option value="2643743">Londres</option>
+				<option value="2968815">París</option>
+				<option value="6542283">Milán</option>
+			</select>
+		<br/>
+		<p>Ciudad consultada: <em id="msg"></em></p>
+		<div id="result"></div>
+		
+
+
+
+	</main>
+
+
+	<!-- pie de pagina -->
+	<footer>
+		<br/><br/><br/>
+		<div>&copy; 2020 <a href="https://carlosboni.com" target="_blank">Prof. Carlos Boni</a></div>
+	</footer>
+
+	<script>
+		// seccion de codigo javascript. 
+
+		function getWeather(val){
+			let url = 'https://api.openweathermap.org/data/2.5/weather?id=%s&appid=541bcc0e0611a32e3becec862a2525dc&units=metric';
+			url = url.replace('%s', val);
+			//console.log(url);
+			/*
+			return fetch(url)
+				.then((response) => { 
+					return response.json().then((data) => {
+						weather = {};
+						weather['temp_max'] = data['main']['temp_max'];
+						return data;
+					}).catch((err) => {
+						console.log(err);
+					}) 
+				});
+			*/
+
+				return fetch(url)
+					.then((response) => {
+						return response.json();
+					})
+					.then((data) => {
+						var weatherRaw = {}
+
+						weatherRaw['humidity'] = data['main']['humidity'];
+						weatherRaw['temp_max'] = data['main']['temp_max'];
+						weatherRaw['temp_min'] = data['main']['temp_min'];
+						weatherRaw['description'] = data['weather'][0]['description'];
+						weatherRaw['wind'] = data['wind']['speed'];
+
+						return weatherRaw;
+					})
+					.catch((err) => {
+						console.log(err);
+					})
+		}
+
+		$(document).ready(function() {
+			$( "select" ).change(function () {
+				let value = "";
+				$( "select option:selected" ).each(function() {
+					value = $( this ).val();
+				});
+				weatherRaw = getWeather(value);
+				//console.log(weather);
+
+				weatherRaw.then(function(weather) {
+					var ul = document.createElement("ul");
+					var li = '';
+					var content = '';
+					ul.setAttribute("id", "weather");
+
+					for (attr in weather){
+						li = document.createElement("li");
+						content = document.createTextNode(attr + ' ' + weather[attr]);
+						li.appendChild(content);
+						ul.appendChild(li);
+					}
+
+					console.log(ul);
+					$( "#result" ).append(ul);
+				});
+			})
+		});
+		
+	</script>
+</body>
+</html>

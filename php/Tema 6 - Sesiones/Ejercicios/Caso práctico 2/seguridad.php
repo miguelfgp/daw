@@ -1,31 +1,23 @@
 <?php
 
-require 'db.php';
-
-    class Security{
+    class Seguridad{
 
         private $user;
-        private $pass;
 
         function __construct(){
             session_start();
-            if(isset($_SESSION['user']) && isset($_SESSION['pass'])){
+            if(isset($_SESSION['user'])){
                 $this->user = $_SESSION['user'];
-                $this->pass = $this->encryptPass($_SESSION['pass']);
-                //$this->login()
             }
         }
 
-        function encryptPass($pass){
-            return sha1($pass);
+        function getUser(){
+            return $this->user;
         }
 
-        function login($user, $pass){
-            if ((!$this->user === $user) || (!$this->pass === $pass)){
-                session_destroy();
-            }
+        function unsetUser(){
+            $this->user = null;
         }
-
     }
 
 ?>
